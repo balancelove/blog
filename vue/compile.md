@@ -36,7 +36,7 @@ Vue.prototype.$mount = function (
 
 那么编译最重要的部分就是 compileToFunctions 这个函数，他最后返回了 render 函数，关于这个函数，它有点复杂，我画了一张图来看一看它的关系，可能会有误差，希望大侠们可以指出。
 
-![compile](./ompile.png)
+![compile](./compile.png)
 
 ## 编译三步走
 
