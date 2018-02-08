@@ -8,3 +8,4 @@
 - Three.js 开发指南
 - Node.js 硬实战
 - [Vue 源码解读](./vue)
+- [JavaScript 如何工作(译)](./jswork)
