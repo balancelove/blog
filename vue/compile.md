@@ -116,7 +116,7 @@ optimize 的代码量没有 parse 那么多，我们来看看：
 export function optimize (root: ?ASTElement, options: CompilerOptions) {
   // 判断 root 是否存在
   if (!root) return
-  // 判断是否是静态的 attr 属性
+  // 判断是否是静态的属性
   // 'type,tag,attrsList,attrsMap,plain,parent,children,attrs'
   isStaticKey = genStaticKeysCached(options.staticKeys || '')
   // 判断是否是平台保留的标签，html 或者 svg 的
