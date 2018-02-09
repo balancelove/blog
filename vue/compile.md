@@ -91,7 +91,7 @@ const conditionalComment = /^<!\[/
 
 Vue 使用正则表达式去匹配开始结束标签、标签名、属性等等。
 
-关于 while 的详细注解我放在我仓库里了，有兴趣的可以去看看。
+关于 while 的详细注解我放在我[仓库](https://github.com/balancelove/readingNotes/blob/master/vue/while.md)里了，有兴趣的可以去看看。
 
 在 while 里，其实就是不断的去用 `html.indexOf('<')` 去匹配，然后根据返回的索引的不同去做不同的解析处理：
 
