@@ -306,7 +306,8 @@ start (tag, attrs, unary) {
         // 允许 root 元素使用 v-if, v-else-if 和 v-else
         if (root.if && (element.elseif || element.else)) {
           checkRootConstraints(element)
-          addIfCondition(root, {
+          // 添加 if 的条件语句
+          addIfCondition(root, {
             exp: element.elseif,
             block: element
           })
