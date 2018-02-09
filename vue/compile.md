@@ -171,4 +171,12 @@ function isStatic (node: ASTNode): boolean {
 3. 如果你在元素节点中使用了 v-per 或者使用了 `<pre>` 标签，那么就会在这个 node 上加上 pre 为 true，那么这就是个静态节点
 4. 如果它是静态节点，那么需要它不能有动态的绑定、不能有 v-if、v-for、v-else 这些指令，不能是 slot 或者 component 标签、不是我们自定义的标签、没有父节点或者元素的父节点不能是带 v-for 的 template、 这个节点的属性都在 __type,tag,attrsList,attrsMap,plain,parent,children,attrs__ 里面，满足这些条件，就认为它是静态的节点。
 
+接下来，就开始对 AST 进行递归操作，至于里面做了哪些操作，可以到上面那个仓库里去看，这里就不展开了。
+
+#### 第二遍遍历
+
+
+
 ### 代码生成器
+
+
