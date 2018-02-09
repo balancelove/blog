@@ -143,7 +143,7 @@ function markStatic (node: ASTNode) {
 
 其实 markStatic 就是一个递归的过程，不断地去检查 AST 上的节点，然后打上标记。
 
-刚刚我们说过，AST 节点分三种，在 isStatic 这个函数中我们队不同类型的节点做了判断：
+刚刚我们说过，AST 节点分三种，在 isStatic 这个函数中我们对不同类型的节点做了判断：
 
 ```js
 function isStatic (node: ASTNode): boolean {
@@ -164,6 +164,11 @@ function isStatic (node: ASTNode): boolean {
 }
 ```
 
-可以看到，当这个节点的 type 为 2，也就是表达式节点的时候，很明显它不是一个静态节点，所以返回 false，当 type 为 3 的时候，也就是文本节点，那它就是一个静态节点，返回 true。
+可以看到 Vue 对下面几种情况做了处理：
+
+1. 当这个节点的 type 为 2，也就是表达式节点的时候，很明显它不是一个静态节点，所以返回 false
+2. 当 type 为 3 的时候，也就是文本节点，那它就是一个静态节点，返回 true
+3. 如果你在元素节点中使用了 v-per 或者使用了 <pre> 标签，那么就会在这个 node 上加上 pre 为 true，那么这就是个静态节点
+4. 如果它需要时静态节点，那么需要它不能有动态的绑定、不能有 v-if、v-for、v-else 这些指令，
 
 ### 代码生成器
