@@ -119,15 +119,51 @@ export function optimize (root: ?ASTElement, options: CompilerOptions) {
   // 判断是否是静态的 attr 属性
   // 'type,tag,attrsList,attrsMap,plain,parent,children,attrs'
   isStaticKey = genStaticKeysCached(options.staticKeys || '')
-  // 判断是否是平台保留的标签，
-  isPlatformReservedTag = options.isReservedTag || no
-  // 第一遍遍历: 标记所有非静态节点
-  markStatic(root)
-  // 第二遍遍历:标记所有静态节点
+  // 判断是否是平台保留的标签，html 或者 svg 的
+  isPlatformReservedTag = options.isReservedTag || no
+  // 第一遍遍历: 给所有静态节点打上是否是静态节点的标记
+  markStatic(root)
+  // 第二遍遍历:标记所有静态根节点
   markStaticRoots(root, false)
 }
 ```
 
+下面两段代码我都剪切了一部分，因为有点多，这里就不贴太多代码了，详情请参考[我的仓库](./optimize.md)。
 
+#### 第一遍遍历
+
+```js
+function markStatic (node: ASTNode) {
+  node.static = isStatic(node)
+  if (node.type === 1) {
+    ...
+  }
+}
+```
+
+其实 markStatic 就是一个递归的过程，不断地去检查 AST 上的节点，然后打上标记。
+
+刚刚我们说过，AST 节点分三种，在 isStatic 这个函数中我们队不同类型的节点做了判断：
+
+```js
+function isStatic (node: ASTNode): boolean {
+  if (node.type === 2) { // expression
+    return false
+  }
+  if (node.type === 3) { // text
+    return true
+  }
+  return !!(node.pre || (
+    !node.hasBindings && // no dynamic bindings
+    !node.if && !node.for && // not v-if or v-for or v-else
+    !isBuiltInTag(node.tag) && // not a built-in
+    isPlatformReservedTag(node.tag) && // not a component
+    !isDirectChildOfTemplateFor(node) &&
+    Object.keys(node).every(isStaticKey)
+  ))
+}
+```
+
+可以看到，当这个节点的 type 为 2，也就是表达式节点的时候，很明显它不是一个静态节点，所以返回 false，当 type 为 3 的时候，也就是文本节点，那它就是一个静态节点，返回 true。
 
 ### 代码生成器
