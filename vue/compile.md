@@ -171,12 +171,34 @@ function isStatic (node: ASTNode): boolean {
 3. 如果你在元素节点中使用了 v-per 或者使用了 `<pre>` 标签，那么就会在这个 node 上加上 pre 为 true，那么这就是个静态节点
 4. 如果它是静态节点，那么需要它不能有动态的绑定、不能有 v-if、v-for、v-else 这些指令，不能是 slot 或者 component 标签、不是我们自定义的标签、没有父节点或者元素的父节点不能是带 v-for 的 template、 这个节点的属性都在 __type,tag,attrsList,attrsMap,plain,parent,children,attrs__ 里面，满足这些条件，就认为它是静态的节点。
 
-接下来，就开始对 AST 进行递归操作，至于里面做了哪些操作，可以到上面那个仓库里去看，这里就不展开了。
+接下来，就开始对 AST 进行递归操作，标记静态的节点，至于里面做了哪些操作，可以到上面那个仓库里去看，这里就不展开了。
 
 #### 第二遍遍历
 
+第二遍遍历的过程是标记静态根节点，那么我们对静态根节点的定义是什么，首先根节点的意思就是他不能是叶子节点，起码要有子节点，并且它是静态的。在这里 Vue 做了一个说明，如果一个静态节点它只拥有一个子节点并且这个子节点是文本节点，那么就不做静态处理，它的成本大于收益，不如直接渲染。
 
+同样的，我们在函数中不断的递归进行标记，最后在所有静态根节点上加上 staticRoot 的标记，关于这段代码也可以去上面的仓库看一看。
 
 ### 代码生成器
+
+> 在这个函数中，我们将 AST 转换成为 render 函数字符串，代码量还是挺多的，我们可以来看一看。
+
+```js
+export function generate (
+  ast: ASTElement | void,
+  options: CompilerOptions
+): CodegenResult {
+  // 这就是编译的一些参数
+  const state = new CodegenState(options)
+  // 生成 render 字符串
+  const code = ast ? genElement(ast, state) : '_c("div")'
+  return {
+    render: `with(this){return ${code}}`,
+    staticRenderFns: state.staticRenderFns
+  }
+}
+```
+
+可以看到在最后代码生成阶段，最重要的函数就是 genElement 这个函数，它的代码注解在[这个文件]()。
 
 
