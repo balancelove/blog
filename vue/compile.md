@@ -169,6 +169,6 @@ function isStatic (node: ASTNode): boolean {
 1. 当这个节点的 type 为 2，也就是表达式节点的时候，很明显它不是一个静态节点，所以返回 false
 2. 当 type 为 3 的时候，也就是文本节点，那它就是一个静态节点，返回 true
 3. 如果你在元素节点中使用了 v-per 或者使用了 `<pre>` 标签，那么就会在这个 node 上加上 pre 为 true，那么这就是个静态节点
-4. 如果它需要时静态节点，那么需要它不能有动态的绑定、不能有 v-if、v-for、v-else 这些指令，不能是 slot 或者 component 标签、不是我们自定义的标签、没有父节点或者元素的父节点不能是带 v-for 的 template、 这个节点的属性都在 __type,tag,attrsList,attrsMap,plain,parent,children,attrs__ 里面，满足这些条件，就认为它是静态的节点。
+4. 如果它是静态节点，那么需要它不能有动态的绑定、不能有 v-if、v-for、v-else 这些指令，不能是 slot 或者 component 标签、不是我们自定义的标签、没有父节点或者元素的父节点不能是带 v-for 的 template、 这个节点的属性都在 __type,tag,attrsList,attrsMap,plain,parent,children,attrs__ 里面，满足这些条件，就认为它是静态的节点。
 
 ### 代码生成器
