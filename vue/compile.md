@@ -128,7 +128,7 @@ export function optimize (root: ?ASTElement, options: CompilerOptions) {
 }
 ```
 
-下面两段代码我都剪切了一部分，因为有点多，这里就不贴太多代码了，详情请参考[我的仓库](./optimize.md)。
+下面两段代码我都剪切了一部分，因为有点多，这里就不贴太多代码了，详情请参考[我的仓库](https://github.com/balancelove/readingNotes/blob/master/vue/optimize.md)。
 
 #### 第一遍遍历
 
