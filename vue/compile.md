@@ -199,6 +199,58 @@ export function generate (
 }
 ```
 
-可以看到在最后代码生成阶段，最重要的函数就是 genElement 这个函数，它的代码注解在[这个文件]()。
+可以看到在最后代码生成阶段，最重要的函数就是 genElement 这个函数，针对不同的指令、属性，我们会选择不同的代码生成函数。最后我们按照 AST 生成拼接成一个字符串，如下所示：
 
+```js
+with(this){return _c('div',{attrs:{"id":"demo"}},[(1>0)?_c('h1',[_v("Latest Vue.js Commits")]):_e(),...}
+```
 
+在其中，我们会看到一些函数，那么这些函数是在什么地方定义的呢？我们可以在 core/instance/index.js 这个文件中找到这些函数：
+
+```js
+// v-once
+target._o = markOnce
+// 转换
+target._n = toNumber
+target._s = toString
+// v-for
+target._l = renderList
+// slot
+target._t = renderSlot
+// 是否相等
+target._q = looseEqual
+// 检测数组里是否有相等的值
+target._i = looseIndexOf
+// 渲染静态树
+target._m = renderStatic
+// 过滤器处理
+target._f = resolveFilter
+// 检查关键字
+target._k = checkKeyCodes
+// v-bind
+target._b = bindObjectProps
+// 创建文本节点
+target._v = createTextVNode
+// 创建空节点
+target._e = createEmptyVNode
+// 处理 scopeslot
+target._u = resolveScopedSlots
+// 处理事件绑定
+target._g = bindObjectListeners
+// 创建 VNode 节点
+vm._c = (a, b, c, d) => createElement(vm, a, b, c, d, false)
+```
+
+我们可以很清楚的看到，最后生成了这么一个渲染字符串，那么我们要如何去使用它呢？其实在后面进行渲染的时候，我们进行了 `new Function(render)`，然后我们就可以使用 render 函数了。
+
+## 总结
+
+大流程走完之后，我相信大家会对编译过程有一个比较清晰的认识，然后再去挖细节相信也会容易的多了，读源码，其实并不是一个为了读而读的过程，我们可以在源码中学到很多我们可能在日常开发中没有了解到的知识。
+
+至于最后代码生成器中的那一大段代码，我们先还没有把它注释好，后面应该会将源码注释放到仓库里，我相信大家也能够顺利的去读懂源码。
+
+还有一点要提的是在 render 函数中，Vue 使用了 with 函数，我们平时肯定没见过，因为官方不推荐我们去使用 with，我抱着这样的想法去找了找原因，最后我在知乎上找到了尤大大的回答，这是[链接](https://www.zhihu.com/question/49929356/answer/118563361)，大家可以去了解下。
+
+最后，祝各位大侠，新年快乐，来年事业顺利，学业有成。
+
+借组长的话：愿平静、快乐与你同在！
