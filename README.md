@@ -26,9 +26,9 @@
 
 ## 工作总结
 
-- [npm/yarn 相关](.worknotes/npm)
-   1. [hash 值错误](.worknotes/npm/hash.md)
-   2. [workspace](.worknotes/npm/workspace.md)
-- [Linux 相关](.worknotes/linux)
-- [eslint 相关](.worknotes/eslint)
-   1. [timingAttack](.worknotes/eslint/timingAttack.md)
+- [npm/yarn 相关](./worknotes/npm)
+   1. [hash 值错误](./worknotes/npm/hash.md)
+   2. [workspace](./worknotes/npm/workspace.md)
+- [Linux 相关](./worknotes/linux)
+- [eslint 相关](./worknotes/eslint)
+   1. [timingAttack](./worknotes/eslint/timingAttack.md)
