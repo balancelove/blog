@@ -11,7 +11,7 @@
 
 ## 图书阅读
 
-- JavaScript 设计模式      __`reading Now`__
+- JavaScript 设计模式 
 - Three.js 开发指南
 - Node.js 硬实战
 - [图解 HTTP](./http/start.md)
@@ -26,7 +26,9 @@
 
 ## 工作总结
 
-- [npm 相关](./npm)
+- [npm/yarn 相关](./npm)
+   1. [hash 值错误](./npm/hash.md)
+   2. [workspace](./npm/workspace.md)
 - [Linux 相关](./linux)
 - [eslint 相关](./eslint)
    1. [timingAttack](./eslint/timingAttack.md)
