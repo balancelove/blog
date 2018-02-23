@@ -32,3 +32,4 @@
 - [Linux 相关](./worknotes/linux)
 - [eslint 相关](./worknotes/eslint)
    1. [timingAttack](./worknotes/eslint/timingAttack.md)
+   2. [入门配置](./worknotes/eslint/baseConfig.md)
