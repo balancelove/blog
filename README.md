@@ -27,7 +27,7 @@
 ## 工作总结
 
 - [npm/yarn 相关](./npm)
-   1. [hash 值错误](./npm/hash.md)
+   1. [hash 值错误](./npm/hash.md)
    2. [workspace](./npm/workspace.md)
 - [Linux 相关](./linux)
 - [eslint 相关](./eslint)
