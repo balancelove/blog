@@ -2,11 +2,24 @@
 
 > 坚持读书，坚持记录，分享心得体会
 
-## 书单导航
+## 图书阅读
 
 - JavaScript 设计模式      __`reading Now`__
 - Three.js 开发指南
 - Node.js 硬实战
-- [图解 HTTP](./http)
-- [Vue 源码解读](./vue)
+- [图解 HTTP](./http/start.md)
+
+## 翻译
+
 - [JavaScript 如何工作(译)](./jswork)
+
+## 源码阅读
+
+- [Vue 源码解读](./vue)
+
+## 工作总结
+
+- [npm 相关](./npm)
+- [Linux 相关](./linux)
+- [eslint 相关](./eslint)
+   - [timingAttack](./eslint/timingAttack.md)
