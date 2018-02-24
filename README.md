@@ -32,6 +32,7 @@
    3. [windows 装包出现 fsevents 报错](./worknotes/npm/fsevents.md)
 - [Linux 相关](./worknotes/linux)
    1. [Inodes 不足](./worknotes/linux/noSpaceLeft.md)
+   2. [find 多文件](./worknotes/linux/find.md)
 - [eslint 相关](./worknotes/eslint)
    1. [timingAttack](./worknotes/eslint/timingAttack.md)
    2. [入门配置](./worknotes/eslint/baseConfig.md)
