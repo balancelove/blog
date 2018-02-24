@@ -6,7 +6,7 @@
 
 但是这样会提示一个错误，`find: paths must precede expression`。好吧，看来我们写错了，于是，我又踏上了寻错之旅。
 
-## 解决问题
+## 解决方案
 
 解决方案是： `rm $(find folder -name '*.md')`。
 
