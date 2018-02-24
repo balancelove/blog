@@ -29,7 +29,7 @@
 - [npm/yarn 相关](./worknotes/npm)
    1. [hash 值错误](./worknotes/npm/hash.md)
    2. [workspace](./worknotes/npm/workspace.md)
-   3. [windows 装包出现 fsevents 报错](./worknotes/npm/fsevents.md)
+   3. [windows 装包出现 fsevents 报错](./worknotes/npm/fsevents.md)
 - [Linux 相关](./worknotes/linux)
 - [eslint 相关](./worknotes/eslint)
    1. [timingAttack](./worknotes/eslint/timingAttack.md)
