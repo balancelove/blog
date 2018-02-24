@@ -12,6 +12,6 @@
 
 我找到了一个[博客](https://www.ivankuznetsov.com/2010/02/no-space-left-on-device-running-out-of-inodes.html/comment-page-2#comment-992817)，这个博客里面给出了具体的解决方案。
 
-Why?
+## Why?
 
 因为我之前删除 node_modules 是通过图形界面来删除的，这个删除并不是真正的删除，所以 inodes 越来越多，最后导致空间不足。
