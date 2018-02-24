@@ -8,7 +8,7 @@
 
 ## 解决问题
 
-解决方案是： `rm $(find floder -name '*.md')`。
+解决方案是： `rm $(find folder -name '*.md')`。
 
 ## why?
 
