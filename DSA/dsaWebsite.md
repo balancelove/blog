@@ -4,6 +4,8 @@
 
 - https://visualgo.net/zh
 
-
+![visualgo](./visualgo.png)
 
 - http://algo-visualizer.jasonpark.me/#path=backtracking/knight's_tour/basic
+
+![algo-visualizer](./algo-visualizer.png)
