@@ -58,3 +58,120 @@ const stack = [];
 
 ## 代码实现
 
+首先，我们要实现一个计算逆波兰式的方法：
+
+```js
+const polish = arr => {
+  // 定义一个栈
+  const stack = [];
+  // 然后一个一个去匹配
+  for (const value of arr) {
+    // 匹配到数字就入栈
+    if (typeof value === 'number') {
+      stack.push(value);
+    // 是操作符就进行运算
+    } else if (typeof value === 'string') {
+      // 弹出栈顶两位数
+      const v1 = stack.pop();
+      const v2 = stack.pop();
+      let v3;
+      // 进行操作
+      switch(value) {
+        case '+':
+          v3 = v2 + v1;
+          break;
+        case '-':
+          v3 = v2 - v1;
+          break;
+        case '*':
+          v3 = v2 * v1;
+          break;
+        case '/':
+          v3 = v2 / v1;
+          break;
+        default:
+          break;
+      }
+      // 如果栈空了，就返回值
+      if (stack.length === 0) {
+        return v3;
+      // 如果没空，就将值压入栈中，继续执行
+      } else {
+        stack.push(v3);
+      }
+    }
+  }
+};
+
+const arr = [4, 4, 2, 1, '-', '*', '+'];
+// output: 8
+console.log(polish(arr));
+```
+
+然后，现在我们需要将中缀表达式转换成后缀表达式。
+
+```js
+const change = arr => {
+  // 定义一个栈以及一个一个返回数组
+  const stack = [];
+  const result = [];
+  // 运算符优先级
+  const highLevel = ['*', '/'];
+  const lowLevel = ['-', '+'];
+  for (const value of arr) {
+    // 如果是数字就直接入栈
+    if (typeof value === 'number') {
+      result.push(value);
+    } else if (typeof value === 'string') {
+      // 如果是第一次遇到符号，直接进栈
+      if (stack.length === 0) {
+        stack.push(value);
+      // 如果是 )
+      } else if (value === ')') {
+        // 将 () 之间的符号压入栈中
+        for (let i = stack.length; i > 0; i--) {
+          if (stack[i - 1] !== '(') {
+            const flag = stack.pop();
+            result.push(flag);
+          } else {
+            stack.pop();
+            break;
+          }
+        }
+      } else {
+        // 判断符号优先级
+        let len = stack.length;
+        while(len > 0) {
+          if (lowLevel.includes(value) && highLevel.includes(stack[stack.length - 1])) {
+            const flag = stack.pop();
+            result.push(flag);
+          } else {
+            stack.push(value);
+            break;
+          }
+          len--;
+        }
+      }
+    }
+  }
+  // 最后将所有剩余操作符压入栈中
+  let len = stack.length;
+  while(len > 0) {
+    const flag = stack.pop();
+    result.push(flag);
+    len--;
+  }
+  return result;
+};
+
+const arr = [9, '+', 2, '*', '(', 2, '+', 1, '*', 5, ')', '+', 9, '/', 3];
+// // 9+2*(2+1*5)+9/3 = 9+14+3 = 26
+console.log(polish(change(arr)));
+```
+
+这样我们就简单的实现了一把如何将中缀表达式转换成后缀表达式，然后再计算出来，这里我们用数组来模拟这个计算表达式，因为比较好操作。
+
+好了，这次就讲到这里，下回再见了。
+
+>  如果各位看官看的还行，可以到 [GitHub](https://github.com/balancelove/readingNotes) 里给我一颗小小的 star 支持一下，谢谢。
+
