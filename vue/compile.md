@@ -254,3 +254,5 @@ vm._c = (a, b, c, d) => createElement(vm, a, b, c, d, false)
 最后，祝各位大侠，新年快乐，来年事业顺利，学业有成。
 
 借组长的话：愿平静、快乐与你同在！
+
+> 如果各位看官看的还行，可以到 [GitHub](https://github.com/balancelove/readingNotes) 里给我一颗小小的 star 支持一下，谢谢。
