@@ -39,6 +39,8 @@
    2. [入门配置](./worknotes/eslint/baseConfig.md)
 - [webpack 相关](./worknotes/webpack)
    1. [基本配置](./worknotes/webpack/webpack.md)
+- [git](./worknotes/git)
+   1. [fileExists](./worknotes/git/fileExists.md)
    
 ## 杂文
 
