@@ -58,9 +58,6 @@ window.addEventListener('popstate', e => {
 
 ### Hash
 
-这种方案就是去监听 hash 的变化，然后去做相应的操作，其实非常简单，我们需要用到 __location.hash__ 和 __hashchange__ 这个事件就好了，很简单这里就不说了。
+这种方案就是去监听 hash 的变化，然后去做相应的操作，其实非常简单，我们需要用到 __location.hash__ 和 __hashchange__ 这个事件就好了，很简单，和上面的操作差不多这里就不说了。
 
-
-
-
-
+> 如果各位看官看的还行，可以到 [GitHub](https://github.com/balancelove/readingNotes) 里给我一颗小小的 star 支持一下，谢谢。
