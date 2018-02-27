@@ -57,3 +57,11 @@
 3. [逆波兰式](./DSA/polish.md)
 
 ## 面试总结
+
+1. [class List](./interview/classList.md)
+2. [跨域解决方案](./interview/crossOrigin.md)
+3. [小数精度](./interview/floatPreci.md)
+4. [前端优化](./interview/optimization.md)
+5. [页面加载和渲染过程](./interview/paint.md)
+6. [前端安全](./interview/security.md)
+7. [尾递归调用](./interview/tailRecursion.md)
