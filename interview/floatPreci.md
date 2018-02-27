@@ -6,7 +6,7 @@
 
 在控制台里打印一下 `0.1 + 0.2 === 0.3`，可以看到，0.1+0.2是不等于0.3的，那么我们要怎么去规避这样的问题。看下面的一个函数：
 
-```
+```js
 function formatFloat(float, n) {
    var fix = Math.pow(10, n);  //  计算10的n次方
    return parseInt(float * fix, 10) / fix;
