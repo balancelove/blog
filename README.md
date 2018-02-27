@@ -49,7 +49,7 @@
 ## 杂文
 
 1. [大话 SPA router](./Essay/spa.md)
-2. [数字证书那些事](./Eassay/ca.md)
+2. [数字证书那些事](./Essay/ca.md)
 
 ## 数据结构与算法
 
