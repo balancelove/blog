@@ -17,15 +17,15 @@
 1. JavaScript 设计模式 
 2. Three.js 开发指南
 3. Node.js 硬实战
-4. [图解 HTTP](./http/start.md)
+4. [图解 HTTP](./bookRead/http/start.md)
 
 ## 翻译
 
-1. [JavaScript 如何工作(译)](./jswork)
+1. [JavaScript 如何工作(译)](./translate/jswork)
 
 ## 源码阅读
 
-1. [Vue 源码解读](./vue)
+1. [Vue 源码解读](./sourceRead/vue)
 
 ## 工作总结
 
@@ -43,6 +43,8 @@
    1. [基本配置](./worknotes/webpack/webpack.md)
 5. [git](./worknotes/git)
    1. [fileExists](./worknotes/git/fileExists.md)
+6. [css 相关](./worknotes/css)
+   1. [自适应设计](./worknotes/css/selfAdaption.md)
    
 ## 杂文
 
