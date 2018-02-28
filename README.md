@@ -59,8 +59,7 @@
 
 ## 面试总结
 
-1. [基础面试](./interview/base/index.md)
-   1. [页面加载和渲染过程](./interview/base/paint.md)
+1. [基础面试 — 目录](./interview/base/index.md)
 
 1. [class List](./interview/classList.md)
 2. [跨域解决方案](./interview/crossOrigin.md)
