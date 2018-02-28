@@ -59,6 +59,8 @@
 
 ## 面试总结
 
+- [基础面试](./interview/base/index.md)
+
 1. [class List](./interview/classList.md)
 2. [跨域解决方案](./interview/crossOrigin.md)
 3. [小数精度](./interview/floatPreci.md)
