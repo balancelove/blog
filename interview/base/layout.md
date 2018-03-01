@@ -10,6 +10,8 @@
 
 ### 绝对定位布局
 
+优缺点： 简单，快捷，可扩展性差。
+
 ```css
 .container {
   position: relative;
@@ -55,11 +57,14 @@
 ```css
 .container {
   display: grid;
+  grid-template-rows: 500px;
   grid-template-columns: 300px 1fr 300px;
 }
 ```
 
 ### table 布局
+
+优缺点： 兼容性非常好，但是三栏等高，可能不合适。
 
 ```css
 .container {
@@ -77,6 +82,8 @@
 ```
 
 ### float 布局
+
+优缺点： 兼容性好，但是要处理浮动关系
 
 ```css
 .left {
