@@ -6,6 +6,8 @@
 
 - [页面布局](./layout.md)
 - [盒模型](./box.md)
+- [类型转换](./typeChange.md)
 - [前端安全](./security.md)
 - [http](./http.md)
 - [原型链](./proto.md)
+
