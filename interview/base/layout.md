@@ -110,3 +110,5 @@
 缺点: 并没有实现等高布局，增加了html结构
 
 链接： https://www.cnblogs.com/xiaohuochai/p/5459587.html
+
+注意：去除掉高度已知条件之后发生什么,大家可以去看看。
