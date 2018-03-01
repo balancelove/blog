@@ -62,10 +62,4 @@
 ## 面试总结
 
 1. [基础面试 — 目录](./interview/base/index.md)
-
-1. [class List](./interview/classList.md)
-2. [跨域解决方案](./interview/crossOrigin.md)
-3. [小数精度](./interview/floatPreci.md)
-4. [前端优化](./interview/optimization.md)
-5. [前端安全](./interview/security.md)
-6. [尾递归调用](./interview/tailRecursion.md)
+2. [进阶面试 — 目录](./interview/advanced/index.md)
