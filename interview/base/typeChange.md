@@ -67,3 +67,5 @@ JS 中有 7 中数据类型：
 []+{} // "[object Object]"
 1+{} // "1[object Object]"
 ```
+
+一篇博客大家可以去看看，理解会更深入： https://segmentfault.com/a/1190000008038678
