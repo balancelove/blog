@@ -100,13 +100,13 @@ console.log(a3.toString());
 
 ## 举个栗子
 
-好了，根据我们上面说的，那些面试题简直洒洒水，我们一个一个看。
+好了，根据我们上面说的，那些面试题简直洒洒水，我们来看。
 
 ```js
 []+{}
 ```
 
-我们如何去分析，在这里，我们首先将 [] 和 {} 转换成原始值，也就是 ToPrimitive([], Number) 以及 ToPrimitive({}, Number)，很明显 `[].valueOf()` 还是一个对象，所以我们继续，`[].toString()` 结果为 ""，相同的解析过程 {} 转换成 "[object Object]"。
+我们如何去分析呢？在这里，我们首先将 [] 和 {} 转换成原始数据类型，也就是 ToPrimitive([]) 以及 ToPrimitive({})，PreferredType 默认为 Number，很明显 `[].valueOf()` 还是一个对象，所以我们继续，`[].toString()` 结果为 ""，相同的解析过程 {} 转换成 "[object Object]"。
 
 好了，现在这个式子是 "" + "[object Object]"，我们知道 + 运算只要有字符串就拼接操作数，所以结果是 "[object Object]"。
 
