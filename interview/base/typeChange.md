@@ -6,9 +6,9 @@
 
 JS 中有 7 中数据类型：
 
-基本类型： Null、Boolean、String、Number、Symbol、Undefined
+原始数据类型： Null、Boolean、String、Number、Symbol、Undefined
 
-复合类型： Object
+复合数据类型： Object
 
 ## 显示类型转换
 
