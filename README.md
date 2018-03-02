@@ -17,7 +17,7 @@
 1. JavaScript 设计模式 
 2. Three.js 开发指南
 3. Node.js 硬实战
-4. [图解 HTTP](./bookRead/http/start.md)
+4. [图解 HTTP](./bookRead/http/start.md) —— 暂未完成
 
 ## 翻译
 
@@ -44,14 +44,14 @@
 5. [git](./worknotes/git)
    1. [fileExists](./worknotes/git/fileExists.md)
 6. [css 相关](./worknotes/css)
-   1. [自适应设计](./worknotes/css/selfAdaption.md)
-   2. [Grid 布局开车啦](./worknotes/css/grid.md)
+   1. [自适应设计](./worknotes/css/selfAdaption.md) —— 暂未完成
+   2. [Grid 布局开车啦](./worknotes/css/grid.md)
    
 ## 杂文
 
 1. [大话 SPA router](./Essay/spa.md)
 2. [数字证书那些事](./Essay/ca.md)
-3. [如果面试官问你了解 babel 么](./Essay/babel.md)
+3. [如果面试官问你了解 babel 么](./Essay/babel.md) —— 暂未完成
 4. [JS 看不懂的 []+{}](./Essay/typeChange.md)
 
 ## 数据结构与算法
