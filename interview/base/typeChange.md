@@ -44,11 +44,7 @@ JS 中有 7 中数据类型：
     
 3. Boolean()
 
-  ```js
-  // +0 -0 undefined null '' NaN -> false
-  // 其余都为 true
-  
-  ```
+  +0 -0 undefined null '' NaN -> false，其余都为 true
 
 ## 隐式类型转换
 
