@@ -51,3 +51,19 @@ JS 中有 7 中数据类型：
 1. 四则运算
 2. 判断语句
 3. Native 调用: 比如说 console.log()、alert()
+
+例子：
+
+```js
+// Boolean()
+![]  // false
+!![] // true
+!{}  // false
+!!{} // true
+[]+[] // ""
+[]+1 // "1"
+{}+{} // "[object Object][object Object]"
+{}+[] // 0
+[]+{} // "[object Object]"
+1+{} // "1[object Object]"
+```
