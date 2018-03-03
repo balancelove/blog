@@ -21,8 +21,22 @@ window - document - html - body - ... - 目标元素
 
 获取 html 标签： document.documentElement
 
-## Event对象常见应用
+## Event 对象常见应用
 
-
+- e.preventDefault()
+- e.stopPropagation()
+- e.target: 获取当前被点击的元素
+- e.currentTarget: 指的是当前被绑定事件的元素
+- e.stopImmediatePropagation: 事件响应优先级
 
 ## 自定义事件
+
+```js
+const eve = new Event('custom');
+ev.addEventListener('custom', () => {
+    ...
+});
+ev.dispathEvent(eve);
+```
+
+Event 不足，只能指定事件名，如果要传参数，可以使用 CustomEvent。
