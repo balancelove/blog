@@ -30,5 +30,5 @@ new -> open -> setRequestHeader -> send
 - JSONP(get): 先在全局注册一个函数，然后把函数名作为 script 地址的一部分发出去，响应的是这个函数
 - WebSocket
 - hash
-- CORS: 新出的通信标准，支持跨域的 AJAX，加一个 Origin 就可以跨域了。 
+- CORS: 新出的通信标准，支持跨域的 AJAX，加一个 Origin 就可以跨域了。 为什么支持跨域通信，浏览器会拦截 ajax 请求，加上 origin。
 - postMessage: 注意给谁发消息，就是窗口.postMessage
