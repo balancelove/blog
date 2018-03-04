@@ -6,3 +6,4 @@
 
 - [MVVM 原理](../../sourceRead/vue/simpleVue.md) —— 大家可以到这个文件去看一看原理
 - [JS 运行机制](jsrun.md)
+- [渲染机制](./paint.md)
