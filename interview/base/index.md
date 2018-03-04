@@ -17,4 +17,6 @@
 - [跨域](./crossOrigin.md)
 - [渲染过程](./paint.md)
 - [面向对象](./object.md)
+- [通信类](./communicate.md)
+
 
