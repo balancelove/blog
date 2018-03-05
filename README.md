@@ -26,6 +26,7 @@
 ## 源码阅读
 
 1. [Vue 源码解读](./sourceRead/vue)
+2. [React 源码阅读](./sourceRead/react/index.md)
 
 ## 工作总结
 
