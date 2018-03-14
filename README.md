@@ -11,6 +11,7 @@
 5. [杂文](#杂文)
 6. [数据结构与算法](#数据结构与算法)
 7. [面试总结](#面试总结)
+8. [收藏](#收藏)
 
 ## 图书阅读
 
@@ -65,3 +66,7 @@
 
 1. [基础面试 — 目录](./interview/base/index.md)
 2. [进阶面试 — 目录](./interview/advanced/index.md)
+
+## 收藏
+
+1. [CSS像素、物理像素、逻辑像素、设备像素比、PPI、Viewport](https://github.com/jawil/blog/issues/21)
