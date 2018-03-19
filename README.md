@@ -18,7 +18,8 @@
 1. JavaScript 设计模式 
 2. Three.js 开发指南
 3. Node.js 硬实战
-4. [图解 HTTP](./bookRead/http/start.md) —— 暂未完成
+4. [图解 HTTP](./bookRead/http/start.md)
+5. [CSS 世界](./bookRead/cssWorld/index.md)
 
 ## 翻译
 
