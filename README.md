@@ -56,6 +56,7 @@
 2. [数字证书那些事](./Essay/ca.md)
 3. [如果面试官问你了解 babel 么](./Essay/babel.md) —— 暂未完成
 4. [JS 看不懂的 []+{}](./Essay/typeChange.md)
+5. [如何写出一份高逼格的文档](./Essay/howToWrite.md)
 
 ## 数据结构与算法
 
