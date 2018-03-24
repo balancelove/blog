@@ -60,8 +60,7 @@
 
 ## 数据结构与算法
 
-1. [选择排序](./DSA/selectionSort.md)
-2. [插入排序](./DSA/insertionSort.md)
+1. [排序算法](./DSA/sort.md)
 3. [逆波兰式](./DSA/polish.md)
 
 ## 面试总结
