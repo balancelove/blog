@@ -61,7 +61,7 @@
 ## 数据结构与算法
 
 1. [排序算法](./DSA/sort.md)
-2. [二叉搜索树](./DSA/binarySerach.md)
+2. [二叉搜索树](./DSA/binarySerchTree.md)
 3. [逆波兰式](./DSA/polish.md)
 
 ## 面试总结
