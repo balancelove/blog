@@ -41,24 +41,111 @@ function binarySerch(arr, target) {
 ## 实现
 
 ```js
-class BST {
-    constructor(key, left, right) {
-        this.key = node.key;
-        this.left = node.left || null;
-        this.right = node.right || null;
-        this.count = 0;
-    }
-    size() {
-        return count;
-    }
-    insert(key) {
-        if () {}
-    }
+class Node {
+  constructor(key) {
+    this.key = key;
+    this.left = null;
+    this.right = null;
+  }
 }
 
-const root = new BST(null);
+let root = null;
 
+// 插入节点
+function insertNode(node, newNode) {
+  if (newNode.key < node.key) {
+    if (node.left === null) {
+      node.left = newNode;
+    } else {
+      insertNode(node.left, newNode);
+    }
+  } else {
+    if (node.right === null) {
+      node.right = newNode;
+    } else {
+      insertNode(node.right, newNode);
+    }
+  }
+}
 
+function insert(key) {
+  const newNode = new Node(key);
+  if (root === null) {
+    root = newNode;
+  } else {
+    insertNode(root, newNode);
+  }
+}
 
+// 查询节点
+function searchNode(node, key) {
+  if (key === node.key) {
+    return true;
+  } else if (key > node.key && node.right !== null) {
+    return searchNode(node.right, key);
+  } else if (key < node.key && node.left !== null) {
+    return searchNode(node.left, key);
+  } else {
+    return false;
+  }
+}
+function search(key) {
+  if (root !== null) {
+    return searchNode(root, key);
+  }
+}
+```
+
+## 深度优先遍历
+
+### 前序遍历
+
+```js
+function pre(node) {
+  console.log(node.key);
+  node.left && pre(node.left);
+  node.right && pre(node.right);
+}
+```
+
+### 中序遍历
+
+```js
+function mid(node) {
+  node.left && mid(node.left);
+  console.log(node.key);
+  node.right && mid(node.right);
+}
+```
+
+### 后序遍历
+
+```js
+function after(node) {
+  node.left && after(node.left);
+  node.right && after(node.right);
+  console.log(node.key);
+}
+```
+
+## 广度优先遍历
+
+利用数组实现
+
+```js
+function deep() {
+  const deepArr = [];
+  deepArr.push(root);
+  while (deepArr.length > 0) {
+    const front = deepArr.shift();
+    console.log(front.key);
+    if (front.left) {
+      deepArr.push(front.left);
+    }
+    if (front.right) {
+      deepArr.push(front.right);
+    }
+  }
+}
 ```
 
