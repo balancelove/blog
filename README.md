@@ -16,7 +16,7 @@
 
 ## 图书阅读
 
-1. JavaScript 设计模式 
+1. [花式理解设计模式-读【JavaScript 设计模式】](./bookRead/design/index.md) 
 2. Three.js 开发指南
 3. Node.js 硬实战
 4. [图解 HTTP](./bookRead/http/start.md)
