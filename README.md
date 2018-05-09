@@ -51,6 +51,7 @@
    1. [自适应设计](./worknotes/css/selfAdaption.md) —— 暂未完成
    2. [Grid 布局开车啦](./worknotes/css/grid.md)
 7. [React Native](./worknotes/rn)
+   1. [连接真机找不到设备](./worknotes/rn/connect-device.md)
 
 ## 杂文
 
