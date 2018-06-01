@@ -67,3 +67,4 @@
 ## 收藏
 
 1. [CSS像素、物理像素、逻辑像素、设备像素比、PPI、Viewport](https://github.com/jawil/blog/issues/21)
+2. [Nginx 安装维护入门](https://github.com/jaywcjlove/nginx-tutorial/blob/master/README.md)
