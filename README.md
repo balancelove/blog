@@ -38,6 +38,7 @@
    1. [基本配置](./worknotes/webpack/webpack.md)
 5. [git](./worknotes/git)
    1. [fileExists](./worknotes/git/fileExists.md)
+   2. [如何配置多个 Git 账号](./worknotes/git/multiAccount.md)
 6. [css 相关](./worknotes/css)
    1. [自适应设计](./worknotes/css/selfAdaption.md) —— 暂未完成
    2. [Grid 布局开车啦](./worknotes/css/grid.md)
