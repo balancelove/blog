@@ -64,6 +64,10 @@
 1. [基础面试 — 目录](./interview/base/index.md)
 2. [进阶面试 — 目录](./interview/advanced/index.md)
 
+## 大前端
+
+1. [视频直播](./greatFE/video/index.md)
+
 ## 收藏
 
 1. [CSS像素、物理像素、逻辑像素、设备像素比、PPI、Viewport](https://github.com/jawil/blog/issues/21)
