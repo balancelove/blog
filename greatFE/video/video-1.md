@@ -11,73 +11,73 @@ video 是 h5 的一个很重要的标签，它代替了以前我们在网页中�
 - 基础的用法
 
     ```html
-<video src="./video.mp4" controls></video>
+    <video src="./video.mp4" controls></video>
     ```
 
 - 控制条属性：controlslist<nodownload/nofullscreen/noremoteplayback>
 
     ```html
-<video src="./video.mp4" controls controlslist="nodownload"></video>
+    <video src="./video.mp4" controls controlslist="nodownload"></video>
     ```
 
 - 贴图：poster
 
     ```html
-<video src="./video.mp4" controls poster="./poster.jpg"></video>
+    <video src="./video.mp4" controls poster="./poster.jpg"></video>
     ```
 
 - 静音： muted
 
     ```html
-<video src="..." muted controls></video>
+    <video src="..." muted controls></video>
     ```
 
 - 自动播放： autoplay
 
     ```html
-<video src="..." autoplay></video>
+    <video src="..." autoplay></video>
     ```
 
 - 循环播放：loop
 
    ```html
-<video src="..." loop></video>
+   <video src="..." loop></video>
    ```
 
 - 预加载： preload
 
     ```html
-<video src="..." preload></video>
+    <video src="..." preload></video>
     ```
 
 - 音量控制
 
     ```js
-// 只能通过 js 去设置音量，在标签上直接写没用
-const v = document.getElementById('my_video');
-v.volume = 0.5;
+    // 只能通过 js 去设置音量，在标签上直接写没用
+    const v = document.getElementById('my_video');
+    v.volume = 0.5;
     ```
 
 - 控制时间
 
     ```js
-const v = document.getElementById('my_video');
-v.currentTime = 60; // 设置时间的单位是秒 s
+    const v = document.getElementById('my_video');
+    v.currentTime = 60; // 设置时间的单位是秒 s
     ```
 
 - 切换视频地址（比如说切换高清、超清）
 
     ```js
-const v = document.getElementById('my_video');
-v.src = './other.mp4';
+    const v = document.getElementById('my_video');
+    v.src = './other.mp4';
     ```
 
 - 备用视频地址
 
     ```html
-<video controls>
-  <source src="./video1.mp4" type="video/mp4"/>
-  <source src="./video2.mp4" type="video/mp4"/>
-</video>
+    <video controls>
+      <source src="./video1.mp4" type="video/mp4"/>
+      <source src="./video2.mp4" type="video/mp4"/>
+    </video>
     ```
 
