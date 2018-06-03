@@ -46,6 +46,6 @@ Etag 是服务器为资源分配的唯一标识，作为响应头返回给客户
 
 ### 用户行为对缓存的影响
 
-![user-operation](/Users/ksuser/workspace/mylearn/readingNotes/worknotes/http/cache/user-operation.png)
+![user-operation](./user-operation.png)
 
 关于 http 缓存就说这么多。
