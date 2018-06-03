@@ -44,6 +44,8 @@
    2. [Grid 布局开车啦](./worknotes/css/grid.md)
 7. [React Native](./worknotes/rn)
    1. [连接真机找不到设备](./worknotes/rn/connect-device.md)
+8. [HTTP](./worknotes/http)
+   1. [缓存](./worknotes/http/cache.md)
 
 ## 杂文
 
