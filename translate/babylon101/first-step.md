@@ -4,8 +4,8 @@
 
 1. [第一步](#第一步)
    1. [Playground](#Playground)
-   2. [你自己的 HTML](#你自己的-HTML)
-      1. [HTML 模版](#HTML-模版)
+   2. [你自己的 HTML](#你自己的%20HTML)
+      1. [HTML 模版](#HTML%20模版)
    3. [贴士](#贴士)
 2. [下一步](#下一步)
 3. [延展阅读](#延展阅读)
@@ -60,77 +60,75 @@ var createScene = function () {
 ```html
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
-
    <head>
-      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-      <title>Babylon Template</title>
+     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+     <title>Babylon Template</title>
 
-      <style>
-        html, body {
-            overflow: hidden;
-            width: 100%;
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
+     <style>
+       html, body {
+         overflow: hidden;
+         width: 100%;
+         height: 100%;
+         margin: 0;
+         padding: 0;
+       }
 
-        #renderCanvas {
-            width: 100%;
-            height: 100%;
-            touch-action: none;
-        }
+       #renderCanvas {
+         width: 100%;
+         height: 100%;
+         touch-action: none;
+       }
     </style>
 
     <script src="https://cdn.babylonjs.com/babylon.js"></script>
-        <script src="https://preview.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+    <script src="https://preview.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
     <script src="https://code.jquery.com/pep/0.4.1/pep.js"></script>
 
-   </head>
+  </head>
 
-   <body>
+  <body>
 
     <canvas id="renderCanvas" touch-action="none"></canvas>
 
     <script>
 
-            var canvas = document.getElementById("renderCanvas"); // 获取 canvas 元素
+      var canvas = document.getElementById("renderCanvas"); // 获取 canvas 元素
 
-            var engine = new BABYLON.Engine(canvas, true); // 生成BABYLON 3D 引擎
-
-
-            /******* 添加创建场景的方法 ******/
-            var createScene = function () {
-
-                        // 创建场景
-                        var scene = new BABYLON.Scene(engine);
-
-                        // 添加一个相机并且和 canvas 元素关联
-                        var camera = new BABYLON.ArcRotateCamera("Camera", Math.PI / 2, Math.PI / 2, 2, BABYLON.Vector3.Zero(), scene);
-                        camera.attachControl(canvas, true);
-
-                        // 向场景添加光源
-                        var light1 = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(1, 1, 0), scene);
-                        var light2 = new BABYLON.PointLight("light2", new BABYLON.Vector3(0, 1, -1), scene);
+      var engine = new BABYLON.Engine(canvas, true); // 生成BABYLON 3D 引擎
 
 
-                        // 向场景中添加并且操作网格模型
-                        var sphere = BABYLON.MeshBuilder.CreateSphere("sphere", {diameter:2}, scene);
+      /******* 添加创建场景的方法 ******/
+      var createScene = function () {
 
-                        return scene;
-                };
+        // 创建场景
+        var scene = new BABYLON.Scene(engine);
 
-                /******* 创建场景方法结束 ******/    
+        // 添加一个相机并且和 canvas 元素关联
+        var camera = new BABYLON.ArcRotateCamera("Camera", Math.PI / 2, Math.PI / 2, 2, BABYLON.Vector3.Zero(), scene);
+        camera.attachControl(canvas, true);
 
-                var scene = createScene(); // 调用创建场景的方法
-
-            engine.runRenderLoop(function () { // 注册一个渲染循环不断的渲染场景
-                    scene.render();
-            });
+        // 向场景添加光源
+        var light1 = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(1, 1, 0), scene);
+        var light2 = new BABYLON.PointLight("light2", new BABYLON.Vector3(0, 1, -1), scene);
 
 
-            window.addEventListener("resize", function () { // 监听浏览器/canvas 的 resize 事件
-                    engine.resize();
-            });
+        // 向场景中添加并且操作网格模型
+        var sphere = BABYLON.MeshBuilder.CreateSphere("sphere", {diameter:2}, scene);
+        return scene;
+      };
+
+      /******* 创建场景方法结束 ******/    
+
+      var scene = createScene(); // 调用创建场景的方法
+
+      engine.runRenderLoop(function () { // 注册一个渲染循环不断的渲染场景
+        scene.render();
+      });
+
+
+      window.addEventListener("resize", function () { // 监听浏览器/canvas 的 resize 事件
+        engine.resize();
+      });
     </script>
 
    </body>
