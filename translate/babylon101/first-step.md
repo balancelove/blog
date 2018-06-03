@@ -145,7 +145,7 @@ var createScene = function () {
 
 现在你已准备好进一步学习如何创建更多形状，如球体，圆柱体，盒子等。
 
-下一节：[设置形状](./set-shapes.md)
+下一节：[基本元素](./set-shapes.md)
 
 ## 延展阅读
 
