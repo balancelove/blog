@@ -14,8 +14,8 @@
 
 ## 翻译
 
-1. [JavaScript 如何工作(译)](./translate/jswork)
-2. [Babylon101](./translate/babylon101)
+1. [JavaScript 是如何工作的](./translate/jswork/index.md)
+2. [Babylon101](./translate/babylon101/index.md)
 
 ## 源码阅读
 
