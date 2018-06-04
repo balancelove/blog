@@ -1,6 +1,6 @@
 # 读书笔记
 
-> 坚持读书，坚持记录，分享心得体会
+> 坚持读书，坚持记录，坚持分享
 
 ## 目录
 
@@ -15,13 +15,17 @@
 ## 翻译
 
 1. [JavaScript 是如何工作的](./translate/jswork/index.md)
-2. [Babylon101](./translate/babylon101/index.md)
 
 ## 源码阅读
 
 1. [Vue 源码解读](./sourceRead/vue)
 2. [React 源码阅读](./sourceRead/react/index.md)
 3. [Lodash 源码解读](./sourceRead/lodash/index.md)
+
+## 大前端
+
+1. [视频直播](./greatFE/video/index.md)
+2. [Babylon 可视化](./greatFE/babylon/index.md)
 
 ## 工作总结
 
@@ -66,10 +70,6 @@
 
 1. [基础面试 — 目录](./interview/base/index.md)
 2. [进阶面试 — 目录](./interview/advanced/index.md)
-
-## 大前端
-
-1. [视频直播](./greatFE/video/index.md)
 
 ## 收藏
 
