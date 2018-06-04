@@ -51,4 +51,41 @@ var myBox = BABYLON.MeshBuilder.CreateBox("myBox", {height: 5, width: 2, depth: 
 
 #### 球体
 
+```js
+var sphere = BABYLON.MeshBuilder.CreateSphere("sphere", {}, scene); // 默认的球体
 
+var mySphere = BABYLON.MeshBuilder.CreateSphere("mySphere", {diameter: 2, diameterX: 3}, scene);
+```
+
+|选项(option)|值(value)|默认值(default value)|
+|:---:|:---:|:---:|
+|segment|(number)水平分段的数量|32|
+|diameter|(number)球体的直径|1|
+|diameterX|(number)X 轴直径，覆盖 diameter 属性|diameter|
+|diameterY|(number)Y 轴直径，覆盖 diameter 属性|diameter|
+|diameterZ|(number)Z 轴直径，覆盖 diameter 属性|diameter|
+|arc|(number)周长（纬度），0 - 1 之间|1|
+|slice|(number)高度（经度），0 - 1 之间|1|
+|updatable|(boolean)形状是否更新，true 则为更新|false|
+|sideOrientation|(number)排列方向|DEFAULTSIDE|
+
+- [查看示例](https://www.babylonjs-playground.com/#K6M44R)
+
+#### 平面
+
+```js
+var plane = BABYLON.MeshBuilder.CreatePlane('plane', {}, scene); // 默认平面
+
+var myPlane = BABYLON.MeshBuilder.CreatePlane('myPlane', { width: 5, height: 2 }, scene);
+```
+
+|选项(option)|值(value)|默认值(default value)|
+|:---:|:---:|:---:|
+|size|(number)平面的变长|1|
+|width|(number)宽度|size|
+|height|(number)高度|size|
+|updatable|(boolean)形状是否更新，true 则为更新|false|
+|sideOrientation|(number)排列方向|DEFAULTSIDE|
+|frontUVs|||
+||||
+||||
