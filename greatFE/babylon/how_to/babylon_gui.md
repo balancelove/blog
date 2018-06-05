@@ -290,3 +290,26 @@ MultiLine 在网格、控件之间画线。
 MultiLine 的属性：
 
 ![](./babylon_gui/multiLine_property.png)
+
+### Image —— 图片
+
+### VirtualKeyboard —— 虚拟屏幕按键（常用于 VR）
+
+### Containers
+
+container.background 设置容器背景色。
+
+#### 适应大小
+
+- adaptWidthToChildren
+- adaptHeightToChildren
+
+#### Rectangle —— 矩形容器
+
+#### Ellipse —— 椭圆形容器
+
+#### StackPanel —— 堆面板（以堆的形式展示）
+
+#### ColorPicker —— 颜色选择器
+
+#### Style —— 样式
