@@ -9,6 +9,9 @@
 
 ## 101 课程学习
 
+1. [Babylon 第一步](./course101/first_step.md)
+2. [认识形状](./course101/shape.md)
+
 ## How To 学习
 
 1. [学习使用 Babylon GUI](./how_to/babylon_gui.md)
