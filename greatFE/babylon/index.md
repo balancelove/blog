@@ -15,3 +15,4 @@
 ## How To 学习
 
 1. [学习使用 Babylon GUI](./how_to/babylon_gui.md)
+2. [学习 faceUV 和 faceColors](./how_to/faceuv_facecolors.md)
