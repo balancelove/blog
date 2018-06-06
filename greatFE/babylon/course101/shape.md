@@ -40,3 +40,10 @@ const shape = BABYLON.MeshBuilder.CreateShape(name, options, scene);
   // 默认地面
   const ground = BABYLON.MeshBuilder.CreateGround('myground', {}, scene);
   ```
+
+## 疑惑点
+
+在看上面形状的属性中有几点比较疑惑的地方，希望能解决。
+
+1. faceUV 和 faceColors 是什么？看名字我觉得应该是对每一个面的颜色，但是自己用 rgba 的方式去试了一下，发现好像并不是，而且这里有两个表达方式。后面看了相关介绍终于理解了，关于这两个的解释我也是学习理解了一遍，在[这个地方](../how_to/faceuv_facecolors.md)。
+2. Side Orientation 是什么意思，在下面知道了这个属性有几个值 BABYLON.Mesh.FRONTSIDE， BABYLON.Mesh.BACKSIDE， BABYLON.Mesh.DOUBLESIDE，通过自己去试了试，发现如果是 FRONTSIDE 就只会展示前面，DOUBLESIDE 两面都会展示，默认是 FRONTSIDE。
