@@ -11,6 +11,8 @@
 
 1. [Babylon 第一步](./course101/first_step.md)
 2. [认识形状](./course101/shape.md)
+3. [参数形状](./course101/parametricShape.md)
+4. [位置和旋转](./course101/position.md)
 
 ## How To 学习
 
