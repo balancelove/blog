@@ -7,3 +7,4 @@
 4. [difference](./difference.md)
 5. Math
    - [add](./math/add.md)
+   - [ceil](./math/ceil.md)
