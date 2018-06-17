@@ -59,4 +59,4 @@ class Hash {
 
 ## 解释
 
-- 上面有一个点，用 Object.create(null) 去代替 {}，因为使用 Object.create(null) 创建的对象是很干净的。
+- 上面有一个点，用 Object.create(null) 去代替 {}，因为使用 Object.create(null) 创建的对象是很干净的，没有原型链等等。

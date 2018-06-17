@@ -5,3 +5,5 @@
 2. [chunk](./chunk.md)
 3. [compact](./compact.md)
 4. [difference](./difference.md)
+5. Math
+   - [add](./math/add.md)
