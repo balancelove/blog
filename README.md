@@ -11,7 +11,8 @@
 5. [杂文](#杂文)
 6. [数据结构与算法](#数据结构与算法)
 7. [面试总结](#面试总结)
-8. [收藏](#收藏)
+8. [周月季年总结](#周月季年总结)
+9. [收藏](#收藏)
 
 ## 翻译
 
@@ -74,6 +75,13 @@
 
 1. [基础面试 — 目录](./interview/base/index.md)
 2. [进阶面试 — 目录](./interview/advanced/index.md)
+
+## 周月季年总结
+
+- [周总结](./wmqy/weak/index.md)
+- [月总结](./wmqy/month/index.md)
+- [季总结](./wmqy/quater/index.md)
+- [年总结](./wmqy/year/index.md)
 
 ## 收藏
 
