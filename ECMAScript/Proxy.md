@@ -61,4 +61,4 @@ xm_mother.hasGirlfriend; // true
 
 ## 可拦截操作
 
-1. get：这个方法可以拦截对对象某个属性的读取操作，比如说 `obj.name`，`obj[name]`。
+![](./images/proxy-1.png)
