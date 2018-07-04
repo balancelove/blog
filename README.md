@@ -64,6 +64,7 @@
 3. [如果面试官问你了解 babel 么](./Essay/babel.md) —— 暂未完成
 4. [JS 看不懂的 []+{}](./Essay/typeChange.md)
 5. [如何写出一份高逼格的文档](./Essay/howToWrite.md)
+6. [聊聊我心里的大前端](./Essay/bigFE.md)
 
 ## 数据结构与算法
 
