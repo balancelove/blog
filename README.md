@@ -34,6 +34,7 @@
 
 1. [微服务之服务发现与消息中间件](./architecture/微服务之服务发现与消息中间件.md)
 2. [微服务基础知识](./architecture/微服务基础知识.md)
+3. [Senaca 入门](./architecture/seneca.md)
 
 ## 大前端
 
