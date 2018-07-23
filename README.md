@@ -77,6 +77,7 @@
 
 1. [大 O 表示法](./DSA/O.md)
 2. [二分查找](./DSA/binarySearch.md)
+3. [选择排序](./DSA/selectionSort.md)
 
 ## 面试总结
 
