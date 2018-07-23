@@ -10,3 +10,29 @@
 
 二分查找有一个前提条件，就是你要是用二分查找的这一组数据是有序的，不然就不能使用二分查找了。
 
+## 如何实现
+
+```js
+// 首先我们要确定边界，我们要在 [left, ..., right] 这个前闭后闭区间找到目标数字 target
+function binarySearch(target, arr) {
+  let left = 0;
+  let right = arr.length - 1;
+  let mid;
+  while(left < right) {
+    mid = parseInt(left + (right - left) / 2);
+    if(arr[mid] === target) {
+      return mid;
+    }
+    // 如果 mid 比 target 小，则区间变成 [mid + 1, ..., right]
+    if(arr[mid] < target) {
+      left = mid + 1;
+    }
+    // 如果 mid 比 target 大，则区间变成 [left, ..., mid - 1]
+    if(arr[mid] > target) {
+      right = mid - 1;
+    }
+  }
+  return -1;
+}
+```
+
