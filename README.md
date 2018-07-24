@@ -83,6 +83,7 @@
 ## 设计模式
 
 1. [什么是设计模式](./designPattern/designPattern.md)
+2. [工厂模式](./designPatern/factoryPatern.md)
 
 ## 面试总结
 
