@@ -86,6 +86,7 @@
 2. [工厂模式](./designPatern/factoryPattern.md)
 3. [单例模式](./designPattern/singlePattern.md)
 4. [适配器模式](./designPattern/adapterPattern.md)
+5. [装饰器模式](./designPattern/decoratorPattern.md)
 
 ## 面试总结
 
