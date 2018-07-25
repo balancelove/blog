@@ -88,6 +88,7 @@
 4. [适配器模式](./designPattern/adapterPattern.md)
 5. [装饰器模式](./designPattern/decoratorPattern.md)
 6. [代理模式](./designPattern/proxyPattern.md)
+7. [外观模式](./designPattern/facadePattern.md)
 
 ## 面试总结
 
