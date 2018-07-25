@@ -27,3 +27,8 @@ class SingleObject {
 ```
 
 这样就写成了一个单例，防止 new 初始化，就在构造函数中做了处理，然后，一般是通过 getInstance 来获取单例。
+
+## 使用场景
+
+1. redux 中的 store 
+2. 登录框等等
