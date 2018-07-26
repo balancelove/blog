@@ -90,6 +90,7 @@
 6. [代理模式](./designPattern/proxyPattern.md)
 7. [外观模式](./designPattern/facadePattern.md)
 8. [观察者模式](./designPattern/observerPattern.md)
+9. [迭代器模式](./designPattern/iteratorPattern.md)
 
 ## 面试总结
 
