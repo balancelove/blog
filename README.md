@@ -92,6 +92,7 @@
 8. [观察者模式](./designPattern/observerPattern.md)
 9. [迭代器模式](./designPattern/iteratorPattern.md)
 10. [状态模式](./designPattern/statusPattern.md)
+11. [其他设计模式](./designPattern/otherPattern.md)
 
 ## 面试总结
 
