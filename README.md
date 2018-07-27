@@ -64,6 +64,7 @@
    2. [Grid 布局开车啦](./worknotes/css/grid.md)
 7. [HTTP](./worknotes/http)
    1. [缓存](./worknotes/http/cache.md)
+   2. [基础](./worknotes/http/base.md)
 
 ## 杂文
 
