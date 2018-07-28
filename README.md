@@ -66,6 +66,8 @@
    1. [缓存](./worknotes/http/cache.md)
    2. [基础](./worknotes/http/base.md)
    3. [URI 和 URL](./worknotes/http/urx.md)
+   4. [HTTP 报文](./worknotes/http/message.md)
+   5. [CORS](./worknotes/http/cors.md)
 
 ## 杂文
 
