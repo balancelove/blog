@@ -64,6 +64,21 @@ if (
 
 performance.mark() 和 performance.clearMarks() 是一组函数，我们可以通过使用 performance.mark() 来标记时间戳，我们可以通过这些时间戳的名字来计算两个时间戳中间所花费的时间。
 
+而这样的计算方式是不是看着有点熟，是的，在 console 里的 time 和 timeEnd 也能够计时，但是没有 mark 和 measure 灵活。看下面的例子：
+
+```js
+function per() {
+  performance.mark('per_begin');
+  for(const a = 1; a < 10000;a++) {}
+  performance.mark('per_end');
+}
+per();  // 这时候我们调用 performance.getEntriesByType('mark') 就可以看到刚刚我们标记的两个时间戳了
+// 我们使用 measure 来计算这两个标记点之间所消耗的时间
+performance.measure('per', 'per_begin', 'per_end'); // 通过 performance.getEntriesByName('per') 就可以看到 measure 的时间了
+```
+
+Vue 的源码中对这两个方法进行了封装，从实验中我们能够看到我们每次打点以及计算都会在 performance 里留下记录，Vue 封装的方法在计算完成之后将记录清除掉了。
+
 ## 资源监控
 
 我们对前端的监控主要是两个方面。
