@@ -79,6 +79,8 @@ performance.measure('per', 'per_begin', 'per_end'); // 通过 performance.getEnt
 
 Vue 的源码中对这两个方法进行了封装，从实验中我们能够看到我们每次打点以及计算都会在 performance 里留下记录，Vue 封装的方法在计算完成之后将记录清除掉了。
 
+这里有些同学可能就有点困惑了，你 measure 计算的时候计算了就直接 clear 了，这不就白计算了么？其实，在官方的 devTools 里使用了 PerformanceObserver 去监听 performance 的动作，所以监听到取完值，删掉也就没什么了。
+
 ## 资源监控
 
 我们对前端的监控主要是两个方面。
