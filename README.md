@@ -59,6 +59,7 @@
 5. [git](./worknotes/git)
    1. [fileExists](./worknotes/git/fileExists.md)
    2. [如何配置多个 Git 账号](./worknotes/git/multiAccount.md)
+   3. [如何批量修改 commit 的信息](./worknotes/git/updateUserInfo.md)
 6. [css 相关](./worknotes/css)
    1. [自适应设计](./worknotes/css/selfAdaption.md) —— 暂未完成
    2. [Grid 布局开车啦](./worknotes/css/grid.md)
@@ -67,6 +68,8 @@
    2. [基础](./worknotes/http/base.md)
    3. [URI 和 URL](./worknotes/http/urx.md)
    4. [HTTP 报文](./worknotes/http/message.md)
+8. [TypeScript](./worknotes/typescript)
+   1. [基础类型](./worknotes/typescript/base.md)
 
 ## 杂文
 
