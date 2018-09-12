@@ -70,6 +70,8 @@
    4. [HTTP 报文](./worknotes/http/message.md)
 8. [TypeScript](./worknotes/typescript)
    1. [基础类型](./worknotes/typescript/base.md)
+9. [elasticsearch](./worknotes/elasticsearch)
+   1. [cluster_block_exception](./worknotes/elasticsearch/cluster_block_exception.md)
 
 ## 杂文
 
