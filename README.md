@@ -61,8 +61,7 @@
    2. [如何配置多个 Git 账号](./worknotes/git/multiAccount.md)
    3. [如何批量修改 commit 的信息](./worknotes/git/updateUserInfo.md)
 6. [css 相关](./worknotes/css)
-   1. [自适应设计](./worknotes/css/selfAdaption.md) —— 暂未完成
-   2. [Grid 布局开车啦](./worknotes/css/grid.md)
+   1. [Grid 布局开车啦](./worknotes/css/grid.md)
 7. [HTTP](./worknotes/http)
    1. [缓存](./worknotes/http/cache.md)
    2. [基础](./worknotes/http/base.md)
@@ -82,6 +81,7 @@
 5. [如何写出一份高逼格的文档](./Essay/howToWrite.md)
 6. [聊聊我心里的大前端](./Essay/bigFE.md)
 7. [流“忙”](./Essay/stream.md)
+8. [一道面试题引发的血案](./Essay/event_loop.md)
 
 ## 一步一步学算法
 
