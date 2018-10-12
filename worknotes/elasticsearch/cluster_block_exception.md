@@ -11,9 +11,9 @@
 1. 磁盘扩容，可以在配置文件里修改 ES 数据存储目录，重启 ES 就行了
 2. 放开索引只读设置：
 
-    ```bash
+```bash
 curl -XPUT -H "Content-Type: application/json" http://localhost:9200/_all/_settings -d '{"index.blocks.read_only_allow_delete": false}'
-    ```
+```
 
 ## why
 
