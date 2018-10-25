@@ -4,18 +4,19 @@
 
 ## 目录
 
-1. [翻译](#翻译)
-2. [ECMAScript](#ecmascript)
-3. [TypeScript](#TypeScript)
-4. [源码阅读](#源码阅读)
-5. [架构](#架构)
-6. [工作总结](#工作总结)
-7. [杂文](#杂文)
-8. [一步一步学算法](#一步一步学算法)
-9. [设计模式](#设计模式)
-10. [面试总结](#面试总结)
-11. [周月季年总结](#周月季年总结)
-12. [收藏](#收藏)
+1. [npm 包收集](./npm-collection.md)
+2. [翻译](#翻译)
+3. [ECMAScript](#ecmascript)
+4. [TypeScript](#TypeScript)
+5. [源码阅读](#源码阅读)
+6. [架构](#架构)
+7. [工作总结](#工作总结)
+8. [杂文](#杂文)
+9. [一步一步学算法](#一步一步学算法)
+10. [设计模式](#设计模式)
+11. [面试总结](#面试总结)
+12. [周月季年总结](#周月季年总结)
+13. [收藏](#收藏)
 
 ## 翻译
 
@@ -75,7 +76,7 @@
    3. [URI 和 URL](./worknotes/http/urx.md)
    4. [HTTP 报文](./worknotes/http/message.md)
 8. [TypeScript](./worknotes/typescript)
-   1. [基础类型](./worknotes/typescript/base.md)
+   1. [官方文档](https://www.tslang.cn/docs/handbook/typescript-in-5-minutes.html)
 9. [elasticsearch](./worknotes/elasticsearch)
    1. [cluster_block_exception](./worknotes/elasticsearch/cluster_block_exception.md)
 
