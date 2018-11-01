@@ -45,3 +45,34 @@
 ## 4. 什么是 JSX 和我们怎样在 JavaScript 代码中书写它 —— 浏览器是如何识别它的？
 
 JSX 是 React 的一种标记语法，他会通过像 babel 等工具将代码转换成 React.createElement 的语法调用。这也就是为什么我们在编写 react 代码的时候没有用到 react，却要在开头引入 React 的原因。
+
+## 5. Pure Component 是什么？
+
+除了为你提供了一个具有浅比较的`shouldComponentUpdate`方法，`PureComponent`和`Component`基本上完全相同。当`props`或者`state`改变时，`PureComponent`将对`props`和`state`进行浅比较。另一方面，Component不会比较当前和下个状态的`props`和`state`。因此，每当`shouldComponentUpdate`被调用时，组件默认的会重新渲染。
+
+## 6. HTML 和 React 事件有什么不同？
+
+- HTML 中，事件都是小写的，在 React 里是驼峰命名。
+- 在 HTML 里返回 false 阻止默认事件，在 React 中必须要调用 `event.preventDefault()`。
+
+## 7. 怎么绑定方法或事件？
+
+- 在 constructor 中 bind：this.clickHandle.bind(this)
+- 定义函数时，使用 `handleClick = () => {}`
+- 在回调中使用箭头函数，`onClick={e => this.handleClick(e)}`
+
+## 8. key 在渲染元素数组有什么用？
+
+- 如果项目的顺序可能会改变，则不建议使用 key，可能会对性能产生负面影响
+- 如果将列表提取为单独的组件，则应该在列表组件上应用 key，而不是 li 标签
+
+## 9. 什么时候该使用 refs？
+
+当你需要直接访问 DOM 元素或者组件实例的时候。
+
+## 10. React 16.3 中的 Refs 和 Forwarding Refs？
+
+重点是 Forwarding Refs，它能够在父组件中得到子组件中的 dom 节点。
+
+**父组件myRef——>React.forwardRef中的实参——>通过forwardRef方法创建的子组件中的ref——>指向子组件中的某一个dom节点**
+
