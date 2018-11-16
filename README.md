@@ -7,16 +7,13 @@
 1. [图书阅读](./book)
 2. [翻译](#翻译)
 3. [ECMAScript](#ecmascript)
-4. [TypeScript](#TypeScript)
-5. [源码阅读](#源码阅读)
-6. [架构](#架构)
-7. [工作总结](#工作总结)
-8. [杂文](#杂文)
-9. [一步一步学算法](#一步一步学算法)
-10. [设计模式](#设计模式)
-11. [面试总结](#面试总结)
-12. [周月季年总结](#周月季年总结)
-13. [收藏](#收藏)
+4. [源码阅读](#源码阅读)
+5. [架构](#架构)
+6. [工作总结](#工作总结)
+7. [杂文](#杂文)
+8. [设计模式](#设计模式)
+9. [面试总结](#面试总结)
+10. [收藏](#收藏)
 
 ## 翻译
 
@@ -27,17 +24,9 @@
 1. [Proxy](./ECMAScript/Proxy.md)
 2. [Reflect](./ECMAScript/Reflect.md)
 
-## TypeScript
-
-1. [数据类型](./TypeScript/type.md)
-2. [函数](./TypeScript/func.md)
-3. [类](./TypeScript/class.md)
-
 ## 源码阅读
 
 1. [Vue 源码解读](./sourceRead/vue)
-2. [React 源码阅读](./sourceRead/react/index.md)
-3. [Lodash 源码解读](./sourceRead/lodash/index.md)
 
 ## 架构
 
@@ -48,7 +37,6 @@
 ## 大前端
 
 1. [视频直播](./greatFE/video/index.md)
-2. [Babylon 可视化](./greatFE/babylon/index.md)
 
 ## 工作总结
 
@@ -91,12 +79,6 @@
 7. [流“忙”](./Essay/stream.md)
 8. [一道面试题引发的血案](./Essay/event_loop.md)
 
-## 一步一步学算法
-
-1. [大 O 表示法](./DSA/O.md)
-2. [二分查找](./DSA/binarySearch.md)
-3. [选择排序](./DSA/selectionSort.md)
-
 ## 设计模式
 
 1. [什么是设计模式](./designPattern/designPattern.md)
@@ -116,13 +98,6 @@
 1. [基础面试 — 目录](./interview/base/index.md)
 2. [进阶面试 — 目录](./interview/advanced/index.md)
 3. [React 面试 — 目录](./interview/react/index.md)
-
-## 周月季年总结
-
-- [周总结](./wmqy/weak/index.md)
-- [月总结](./wmqy/month/index.md)
-- [季总结](./wmqy/quater/index.md)
-- [年总结](./wmqy/year/index.md)
 
 ## 收藏
 
