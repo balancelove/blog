@@ -71,6 +71,7 @@
 6. [聊聊我心里的大前端](./Essay/bigFE.md)
 7. [流“忙”](./Essay/stream.md)
 8. [一道面试题引发的血案](./Essay/event_loop.md)
+9. [es6 模块化与 node 的模块化](./Essay/module.md)
 
 ## 设计模式
 

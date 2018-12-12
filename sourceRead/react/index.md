@@ -6,4 +6,5 @@
 
 ## 目录
 
-1. [咋就复杂度是 O(n) 了](./diff.md)
+1. [React 怎么实现的组件挂载](./component.md)
+2. [Fiber](./fiber.md)
