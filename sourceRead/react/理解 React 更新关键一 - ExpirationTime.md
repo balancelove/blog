@@ -3,9 +3,8 @@
 ```js
 const MAX_SIGNED_31_BIT_INT = 1073741823;
 
-// 理解成越大优先级越高
+// 理解成值越大优先级越高
 export const NoWork = 0;
-// ???
 export const Never = 1;
 // V8 系统里最大的整数，优先级最高，同步，立即处理
 export const Sync = MAX_SIGNED_31_BIT_INT; 
