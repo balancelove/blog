@@ -72,6 +72,7 @@
 7. [流“忙”](./Essay/stream.md)
 8. [一道面试题引发的血案](./Essay/event_loop.md)
 9. [es6 模块化与 node 的模块化](./Essay/module.md)
+10. [给你的项目装个探头 — Sentry](./Essay/sentry.md)
 
 ## 设计模式
 
@@ -95,5 +96,5 @@
 
 ## 收藏
 
-1. [CSS像素、物理像素、逻辑像素、设备像素比、PPI、Viewport](https://github.com/jawil/blog/issues/21)
+1. [CSS 像素、物理像素、逻辑像素、设备像素比、PPI、Viewport](https://github.com/jawil/blog/issues/21)
 2. [Nginx 安装维护入门](https://github.com/jaywcjlove/nginx-tutorial/blob/master/README.md)
