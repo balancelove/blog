@@ -1,11 +1,11 @@
 # 【译】JavaScript 如何工作的: 事件循环和异步编程的崛起 + 5 个关于如何使用 async/await 编写更好的技巧
 
-> * 原文地址：[How JavaScript works: Event loop and the rise of Async programming + 5 ways to better coding with async/await](https://blog.sessionstack.com/how-javascript-works-event-loop-and-the-rise-of-async-programming-5-ways-to-better-coding-with-2f077c4438b5)
-> * 原文作者：[Alexander Zlatkov](https://blog.sessionstack.com/@zlatkov?source=post_header_lockup)
-> * 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
-> * 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/TODO/how-javascript-works-event-loop-and-the-rise-of-async-programming-5-ways-to-better-coding-with.md](https://github.com/xitu/gold-miner/blob/master/TODO/how-javascript-works-event-loop-and-the-rise-of-async-programming-5-ways-to-better-coding-with.md)
-> * 译者：[春雪](https://github.com/balancelove)
-> * 校对者：[athena0304](https://github.com/athena0304) [tvChan](https://github.com/tvchan)
+> - 原文地址：[How JavaScript works: Event loop and the rise of Async programming + 5 ways to better coding with async/await](https://blog.sessionstack.com/how-javascript-works-event-loop-and-the-rise-of-async-programming-5-ways-to-better-coding-with-2f077c4438b5)
+> - 原文作者：[Alexander Zlatkov](https://blog.sessionstack.com/@zlatkov?source=post_header_lockup)
+> - 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)
+> - 本文永久链接：[https://github.com/xitu/gold-miner/blob/master/TODO/how-javascript-works-event-loop-and-the-rise-of-async-programming-5-ways-to-better-coding-with.md](https://github.com/xitu/gold-miner/blob/master/TODO/how-javascript-works-event-loop-and-the-rise-of-async-programming-5-ways-to-better-coding-with.md)
+> - 译者：[春雪](https://github.com/balancelove)
+> - 校对者：[athena0304](https://github.com/athena0304) [tvChan](https://github.com/tvchan)
 
 欢迎来到旨在探索 JavaScript 以及它的核心元素的系列文章的第四篇。在认识、描述这些核心元素的过程中，我们也会分享一些当我们构建 [SessionStack](https://www.sessionstack.com/?utm_source=medium&utm_medium=blog&utm_content=Post-4-eventloop-intro) 的时候遵守的一些经验规则，一个 JavaScript 应用应该保持健壮和高性能来维持竞争力。
 
@@ -35,9 +35,9 @@
 
 #### **JavaScript 程序的单元块**
 
-你可能会将你的 JavaScript 代码写在一个 .js 文件中，但你的程序一定是由几个代码块组成的，而且只有一个能够 __现在__ 执行，其余的都会在 __之后__ 执行。最常见的单元块就是函数。
+你可能会将你的 JavaScript 代码写在一个 .js 文件中，但你的程序一定是由几个代码块组成的，而且只有一个能够 **现在** 执行，其余的都会在 **之后** 执行。最常见的单元块就是函数。
 
-JavaScript 开发的新手最不能理解的就是 __之后__ 的代码并不一定会在 __现在__ 的代码执行之后执行。换句话说，在定义中不能 __现在__ 立刻完成的任务将会异步执行，这意味着可能不会像你认为的那样发生上面所说的阻塞问题。
+JavaScript 开发的新手最不能理解的就是 **之后** 的代码并不一定会在 **现在** 的代码执行之后执行。换句话说，在定义中不能 **现在** 立刻完成的任务将会异步执行，这意味着可能不会像你认为的那样发生上面所说的阻塞问题。
 
 让我们来看看下面的例子：
 
@@ -55,7 +55,7 @@ console.log(response);
 
 ```js
 ajax('https://example.com/api', function(response) {
-    console.log(response); // `response` 现在是有值的
+  console.log(response); // `response` 现在是有值的
 });
 ```
 
@@ -66,11 +66,11 @@ ajax('https://example.com/api', function(response) {
 ```js
 // 假设你正在使用 jQuery
 jQuery.ajax({
-    url: 'https://api.example.com/endpoint',
-    success: function(response) {
-        // 这是你的回调
-    },
-    async: false // 这是一个坏主意
+  url: 'https://api.example.com/endpoint',
+  success: function(response) {
+    // 这是你的回调
+  },
+  async: false // 这是一个坏主意
 });
 ```
 
@@ -80,13 +80,13 @@ jQuery.ajax({
 
 ```js
 function first() {
-    console.log('first');
+  console.log('first');
 }
 function second() {
-    console.log('second');
+  console.log('second');
 }
 function third() {
-    console.log('third');
+  console.log('third');
 }
 first();
 setTimeout(second, 1000); // 1000ms 后调用 `second`
@@ -96,14 +96,14 @@ third();
 console 打印出来将会是下面这样的：
 
 ```js
-first
-third
-second
+first;
+third;
+second;
 ```
 
 #### **解析事件循环**
 
-我们先从一个奇怪的说法谈起 —— 尽管 JavaScript 允许异步的代码(就像是我们刚刚说的 `setTimeout`) ，但直到 ES6，JavaScript 自身从未有过任何关于异步的直接概念。JavaScript 引擎只会在任意时刻执行一个程序。
+我们先从一个奇怪的说法谈起  —— 尽管 JavaScript 允许异步的代码(就像是我们刚刚说的 `setTimeout`) ，但直到 ES6，JavaScript 自身从未有过任何关于异步的直接概念。JavaScript 引擎只会在任意时刻执行一个程序。
 
 关于 JavaScript 引擎是如何工作的更多细节(特别是 V8 引擎)请看我们的[前一章](https://blog.sessionstack.com/how-javascript-works-inside-the-v8-engine-5-tips-on-how-to-write-optimized-code-ac089e62b12e)。
 
@@ -126,7 +126,7 @@ second
 
 那图中的这些 Web API 是什么东西呢？从本质上讲，它们是你无法访问的线程，但是你能够调用它们。它们是浏览器并行启动的一部分。如果你是一个 Node.js 的开发者，这些就是 C++ 的一些 API。
 
-那 __事件循环__ 究竟是什么？
+那 **事件循环** 究竟是什么？
 
 ![](https://user-gold-cdn.xitu.io/2017/12/2/160154324931c929?w=478&h=162&f=png&s=18062)
 
@@ -136,8 +136,8 @@ second
 
 ```js
 console.log('Hi');
-setTimeout(function cb1() { 
-    console.log('cb1');
+setTimeout(function cb1() {
+  console.log('cb1');
 }, 5000);
 console.log('Bye');
 ```
@@ -231,7 +231,7 @@ setTimeout(myCallback, 1000);
 ```js
 console.log('Hi');
 setTimeout(function() {
-    console.log('callback');
+  console.log('callback');
 }, 0);
 console.log('Bye');
 ```
@@ -239,9 +239,9 @@ console.log('Bye');
 尽管等待的事件设置成 0 了，但是浏览器 console 的结果将会是下面这样：
 
 ```js
-Hi
-Bye
-callback
+Hi;
+Bye;
+callback;
 ```
 
 #### ES6 中的作业(Jobs)是什么？
@@ -271,17 +271,16 @@ ES6 中介绍了一种叫 “作业队列（Job Queue）” 的新概念。它�
 看看下面的代码：
 
 ```js
-listen('click', function (e){
-    setTimeout(function(){
-        ajax('https://api.example.com/endpoint', function (text){
-            if (text == "hello") {
-	        doSomething();
-	    }
-	    else if (text == "world") {
-	        doSomethingElse();
-            }
-        });
-    }, 500);
+listen('click', function(e) {
+  setTimeout(function() {
+    ajax('https://api.example.com/endpoint', function(text) {
+      if (text == 'hello') {
+        doSomething();
+      } else if (text == 'world') {
+        doSomethingElse();
+      }
+    });
+  }, 500);
 });
 ```
 
@@ -294,36 +293,34 @@ listen('click', function (e){
 乍一看，这个代码似乎可以分解成连续的几个步骤：
 
 ```js
-listen('click', function (e) {
-	// ..
+listen('click', function(e) {
+  // ..
 });
 ```
 
 然后：
 
 ```js
-
-setTimeout(function(){
-    // ..
+setTimeout(function() {
+  // ..
 }, 500);
 ```
 
 再然后：
 
 ```js
-ajax('https://api.example.com/endpoint', function (text){
-    // ..
+ajax('https://api.example.com/endpoint', function(text) {
+  // ..
 });
 ```
 
 最后：
 
 ```js
-if (text == "hello") {
-    doSomething();
-}
-else if (text == "world") {
-    doSomethingElse();
+if (text == 'hello') {
+  doSomething();
+} else if (text == 'world') {
+  doSomethingElse();
 }
 ```
 
@@ -345,38 +342,37 @@ console.log(x + y);
 
 ```js
 function sum(getX, getY, callback) {
-    var x, y;
-    getX(function(result) {
-        x = result;
-        if (y !== undefined) {
-            callback(x + y);
-        }
-    });
-    getY(function(result) {
-        y = result;
-        if (x !== undefined) {
-            callback(x + y);
-        }
-    });
+  var x, y;
+  getX(function(result) {
+    x = result;
+    if (y !== undefined) {
+      callback(x + y);
+    }
+  });
+  getY(function(result) {
+    y = result;
+    if (x !== undefined) {
+      callback(x + y);
+    }
+  });
 }
 // 一个同步或者异步的函数，获取 `x` 的值
 function fetchX() {
-    // ..
+  // ..
 }
-
 
 // 一个同步或者异步的函数，获取 `y` 的值
 function fetchY() {
-    // ..
+  // ..
 }
 sum(fetchX, fetchY, function(result) {
-    console.log(result);
+  console.log(result);
 });
 ```
 
-这里面的关键点在于 — 这段代码中，`x` 和 `y` 是 **未来** 的值，然后我们还写了一个 `sum(…)` 函数，并且从外面看它并不关心 `x` 或者 `y` 现在是不是可用的。
+这里面的关键点在于  —  这段代码中，`x` 和 `y` 是 **未来** 的值，然后我们还写了一个 `sum(…)` 函数，并且从外面看它并不关心 `x` 或者 `y` 现在是不是可用的。
 
-当然，这种基于回调的方式是粗糙的并且有很多不足。这只是初步理解 __未来值__ 以及不需要去担心它们什么时候可用的第一步。
+当然，这种基于回调的方式是粗糙的并且有很多不足。这只是初步理解 **未来值** 以及不需要去担心它们什么时候可用的第一步。
 
 #### Promise 值
 
@@ -384,32 +380,33 @@ sum(fetchX, fetchY, function(result) {
 
 ```js
 function sum(xPromise, yPromise) {
-	// `Promise.all([ .. ])` 接受一个 promises 的数组，
-	// 并且返回一个新的 promise 对象去等待它们
-	// 全部完成
-	return Promise.all([xPromise, yPromise])
+  // `Promise.all([ .. ])` 接受一个 promises 的数组，
+  // 并且返回一个新的 promise 对象去等待它们
+  // 全部完成
+  return (
+    Promise.all([xPromise, yPromise])
 
-	// 当 promise 完成的时候，我们就能获取
-	// `X` and `Y` 的值，并且计算他们
-	.then(function(values){
-		// `values` 是一个来自前面完成的 promise
-		// 的消息数组
-		return values[0] + values[1];
-	} );
+      // 当 promise 完成的时候，我们就能获取
+      // `X` and `Y` 的值，并且计算他们
+      .then(function(values) {
+        // `values` 是一个来自前面完成的 promise
+        // 的消息数组
+        return values[0] + values[1];
+      })
+  );
 }
 
 // `fetchX()` and `fetchY()` 返回 promises 的值，有他们各自的
 // 值，或许*现在* 已经准备好了
 // 也可能要 *等一会儿*。
 sum(fetchX(), fetchY())
-
-// 我们从返回的 promise 得到了这
-// 两个数字的和。
-// 现在我们连续的调用了 `then(...)` 去等待已经完成的
-// promise。
-.then(function(sum){
+  // 我们从返回的 promise 得到了这
+  // 两个数字的和。
+  // 现在我们连续的调用了 `then(...)` 去等待已经完成的
+  // promise。
+  .then(function(sum) {
     console.log(sum);
-});
+  });
 ```
 
 这段代码可以看到两层 Promises。
@@ -418,51 +415,50 @@ sum(fetchX(), fetchY())
 
 第二层 promise 是 `sum(...)` 创建 (通过 `Promise.all([ ... ])`) 并返回的，我们通过调用 `then(...)` 来等待返回。当 `sum(...)` 操作完成的时候，_未来值_ 的总和也就准备就绪了，然后就可以把值打印出来了。我们隐藏了在 `sum(...)` 函数内部等待 `x` 和 `y` 的 _未来值_ 的逻辑。
 
-**注意**：在 `sum(…)` 函数中，`Promise.all([ … ])` 创建了一个 promise (这个 promise 等待 `promiseX` and `promiseY` 的完成)。链式调用 `.then(...)` 来创建另一个 promise，返回的 `values[0] + values[1]` 会立即执行完成(还要加上加运算的结果)。因此，我们在 `sum(...)` 调用结束后加上的 `then(...)` — 在上面代码的末尾 — 实际上是在第二个 promise 返回后执行，而不是第一个 `Promise.all([ ... ])` 创建的 promise。还有，尽管我们没有在第二个 `then(...)` 后面再进行链式调用，但是它也创建了一个 promise，我们可以去观察或是使用它。关于 Promise 的链式调用会在后面详细地解释。
+**注意**：在 `sum(…)` 函数中，`Promise.all([ … ])` 创建了一个 promise (这个 promise 等待 `promiseX` and `promiseY` 的完成)。链式调用 `.then(...)` 来创建另一个 promise，返回的 `values[0] + values[1]` 会立即执行完成(还要加上加运算的结果)。因此，我们在 `sum(...)` 调用结束后加上的 `then(...)` —  在上面代码的末尾  —  实际上是在第二个 promise 返回后执行，而不是第一个 `Promise.all([ ... ])` 创建的 promise。还有，尽管我们没有在第二个 `then(...)` 后面再进行链式调用，但是它也创建了一个 promise，我们可以去观察或是使用它。关于 Promise 的链式调用会在后面详细地解释。
 
 使用 Promises，这个 `then(...)` 的调用其实有两个方法，第一个方法被调用的时机是在已完成的时候 (就像我们前面使用的那样)，而另一个被调用的时机是已失败的时候：
 
 ```js
-sum(fetchX(), fetchY())
-.then(
-    // 完成时
-    function(sum) {
-        console.log( sum );
-    },
-    // 失败时
-    function(err) {
-    	console.error( err ); // bummer!
-    }
+sum(fetchX(), fetchY()).then(
+  // 完成时
+  function(sum) {
+    console.log(sum);
+  },
+  // 失败时
+  function(err) {
+    console.error(err); // bummer!
+  }
 );
 ```
 
 如果在获取 `x` 或者 `y` 的时候出错了，又或许是在进行加运算的时候失败了，`sum(...)` 返回的 promise 将会是已失败的状态，并且会将 promise 已失败的值传给 `then(...)` 的第二个回调处理。
 
-因为 Promises 封装了依赖时间的状态 — 等待内部的值已完成或是已失败 — 从外面看，Promise 是独立于时间的，因此 Promises 可以能通过一种可预测的方式组合起来，而不用去考虑底层的时间或者结果。
+因为 Promises 封装了依赖时间的状态  —  等待内部的值已完成或是已失败  —  从外面看，Promise 是独立于时间的，因此 Promises 可以能通过一种可预测的方式组合起来，而不用去考虑底层的时间或者结果。
 
-而且，一旦 Promise 的状态确定了，那么他就永远也不会改变状态了 — 在这时它会变成一个 _不可改变的值_ — 然后就可以在有需要的时候多次 _观察_ 它。
+而且，一旦 Promise 的状态确定了，那么他就永远也不会改变状态了  —  在这时它会变成一个 *不可改变的值* —  然后就可以在有需要的时候多次 _观察_ 它。
 
 实际上链式的 promises 是非常有用的：
 
 ```js
 function delay(time) {
-    return new Promise(function(resolve, reject){
-        setTimeout(resolve, time);
-    });
+  return new Promise(function(resolve, reject) {
+    setTimeout(resolve, time);
+  });
 }
 
 delay(1000)
-.then(function(){
-    console.log("after 1000ms");
+  .then(function() {
+    console.log('after 1000ms');
     return delay(2000);
-})
-.then(function(){
-    console.log("after another 2000ms");
-})
-.then(function(){
-    console.log("step 4 (next Job)");
+  })
+  .then(function() {
+    console.log('after another 2000ms');
+  })
+  .then(function() {
+    console.log('step 4 (next Job)');
     return delay(5000);
-})
+  });
 // ...
 ```
 
@@ -487,19 +483,19 @@ delay(1000)
 例如：
 
 ```js
-var p = new Promise(function(resolve, reject){
-    foo.bar();	  // 对不起，`foo` 没有定义
-    resolve(374); // 不会执行 :(
+var p = new Promise(function(resolve, reject) {
+  foo.bar(); // 对不起，`foo` 没有定义
+  resolve(374); // 不会执行 :(
 });
 
 p.then(
-    function fulfilled(){
-        // 不会执行 :(
-    },
-    function rejected(err){
-        // `err` 是 `foo.bar()` 那一行
-	// 抛出的 `TypeError` 异常对象。
-    }
+  function fulfilled() {
+    // 不会执行 :(
+  },
+  function rejected(err) {
+    // `err` 是 `foo.bar()` 那一行
+    // 抛出的 `TypeError` 异常对象。
+  }
 );
 ```
 
@@ -533,13 +529,12 @@ p.then(function fulfilled(message){
 ```js
 var p = Promise.resolve(374);
 
-p.then(function fulfilled(msg){
-    // 数字不会拥有字符串的方法，
-    // 所以会抛出一个错误
-    console.log(msg.toLowerCase());
-})
-.done(null, function() {
-    // 如果有异常发生，它就会被全局抛出 
+p.then(function fulfilled(msg) {
+  // 数字不会拥有字符串的方法，
+  // 所以会抛出一个错误
+  console.log(msg.toLowerCase());
+}).done(null, function() {
+  // 如果有异常发生，它就会被全局抛出
 });
 ```
 
@@ -562,14 +557,13 @@ JavaScript ES8 介绍了 `async/await`，使得我们能更简单的使用 Promi
 让我们来看看下面的例子：
 
 ```js
-
 // 一个标准的 JavaScript 函数
 function getNumber1() {
-    return Promise.resolve('374');
+  return Promise.resolve('374');
 }
 // 这个 function 做了和 getNumber1 同样的事
 async function getNumber2() {
-    return 374;
+  return 374;
 }
 ```
 
@@ -577,10 +571,10 @@ async function getNumber2() {
 
 ```js
 function f1() {
-    return Promise.reject('Some error');
+  return Promise.reject('Some error');
 }
 async function f2() {
-    throw 'Some error';
+  throw 'Some error';
 }
 ```
 
@@ -588,15 +582,15 @@ async function f2() {
 
 ```js
 async function loadData() {
-    // `rp` 是一个请求异步函数
-    var promise1 = rp('https://api.example.com/endpoint1');
-    var promise2 = rp('https://api.example.com/endpoint2');
-   
-    // 现在，两个请求都被触发, 
-    // 我们就等待它们完成。
-    var response1 = await promise1;
-    var response2 = await promise2;
-    return response1 + ' ' + response2;
+  // `rp` 是一个请求异步函数
+  var promise1 = rp('https://api.example.com/endpoint1');
+  var promise2 = rp('https://api.example.com/endpoint2');
+
+  // 现在，两个请求都被触发,
+  // 我们就等待它们完成。
+  var response1 = await promise1;
+  var response2 = await promise2;
+  return response1 + ' ' + response2;
 }
 // 但，如果我们没有在 `async function` 里
 // 我们就必须使用 `then`。
@@ -609,16 +603,16 @@ loadData().then(() => console.log('Done'));
 
 ```js
 var loadData = async function() {
-    // `rp` 是一个请求异步函数
-    var promise1 = rp('https://api.example.com/endpoint1');
-    var promise2 = rp('https://api.example.com/endpoint2');
-   
-    // 现在，两个请求都被触发, 
-    // 我们就等待它们完成。
-    var response1 = await promise1;
-    var response2 = await promise2;
-    return response1 + ' ' + response2;
-}
+  // `rp` 是一个请求异步函数
+  var promise1 = rp('https://api.example.com/endpoint1');
+  var promise2 = rp('https://api.example.com/endpoint2');
+
+  // 现在，两个请求都被触发,
+  // 我们就等待它们完成。
+  var response1 = await promise1;
+  var response2 = await promise2;
+  return response1 + ' ' + response2;
+};
 ```
 
 更重要的是，所有主流浏览器都支持 async/await：
@@ -653,12 +647,12 @@ var response = await rp(‘https://api.example.com/endpoint1');
 
 ```js
 async function loadData() {
-    try {
-        var data = JSON.parse(await getJSON());
-        console.log(data);
-    } catch(e) {
-        console.log(e);
-    }
+  try {
+    var data = JSON.parse(await getJSON());
+    console.log(data);
+  } catch (e) {
+    console.log(e);
+  }
 }
 ```
 
@@ -666,19 +660,17 @@ async function loadData() {
 
 ```js
 function loadData() {
-  return getJSON()
-    .then(function(response) {
-      if (response.needsAnotherRequest) {
-        return makeAnotherRequest(response)
-          .then(function(anotherResponse) {
-            console.log(anotherResponse)
-            return anotherResponse
-          })
-      } else {
-        console.log(response)
-        return response
-      }
-    })
+  return getJSON().then(function(response) {
+    if (response.needsAnotherRequest) {
+      return makeAnotherRequest(response).then(function(anotherResponse) {
+        console.log(anotherResponse);
+        return anotherResponse;
+      });
+    } else {
+      console.log(response);
+      return response;
+    }
+  });
 }
 ```
 
@@ -689,16 +681,16 @@ async function loadData() {
   var response = await getJSON();
   if (response.needsAnotherRequest) {
     var anotherResponse = await makeAnotherRequest(response);
-    console.log(anotherResponse)
-    return anotherResponse
+    console.log(anotherResponse);
+    return anotherResponse;
   } else {
     console.log(response);
-    return response;    
+    return response;
   }
 }
 ```
 
-4. **栈帧:** 和 `async/await` 不同的是，根据promise链返回的错误堆栈信息，并不能发现哪出错了。来看看下面的代码：
+4. **栈帧:** 和 `async/await` 不同的是，根据 promise 链返回的错误堆栈信息，并不能发现哪出错了。来看看下面的代码：
 
 ```js
 function loadData() {
@@ -707,13 +699,12 @@ function loadData() {
     .then(callback2)
     .then(callback3)
     .then(() => {
-      throw new Error("boom");
-    })
+      throw new Error('boom');
+    });
 }
-loadData()
-  .catch(function(e) {
-    console.log(err);
-// Error: boom at callAPromise.then.then.then.then (index.js:8:13)
+loadData().catch(function(e) {
+  console.log(err);
+  // Error: boom at callAPromise.then.then.then.then (index.js:8:13)
 });
 ```
 
@@ -721,18 +712,17 @@ loadData()
 
 ```js
 async function loadData() {
-  await callAPromise1()
-  await callAPromise2()
-  await callAPromise3()
-  await callAPromise4()
-  await callAPromise5()
-  throw new Error("boom");
+  await callAPromise1();
+  await callAPromise2();
+  await callAPromise3();
+  await callAPromise4();
+  await callAPromise5();
+  throw new Error('boom');
 }
-loadData()
-  .catch(function(e) {
-    console.log(err);
-    // 输出
-    // Error: boom at loadData (index.js:7:9)
+loadData().catch(function(e) {
+  console.log(err);
+  // 输出
+  // Error: boom at loadData (index.js:7:9)
 });
 ```
 
@@ -744,17 +734,17 @@ loadData()
 
 这一切都发生在你的生产环境中而不会影响你的用户体验。我们需要对我们的代码进行大量的优化，使其尽可能的异步，这样我们就能增加被事件循环处理的事件。
 
-而且这不仅是个库！当你在 SessionStack 要恢复一个用户的会话时，我们必须重现所有在用户的浏览器上出现的问题，我们必须重现整个状态，允许你在会话的事件轴上来回跳转。为了做到这一点，我们大量地使用了JavaScript 提供的异步操作。
+而且这不仅是个库！当你在 SessionStack 要恢复一个用户的会话时，我们必须重现所有在用户的浏览器上出现的问题，我们必须重现整个状态，允许你在会话的事件轴上来回跳转。为了做到这一点，我们大量地使用了 JavaScript 提供的异步操作。
 
 我们有一个免费的计划可以让你[免费开始](https://www.sessionstack.com/?utm_source=medium&utm_medium=blog&utm_content=Post-4-eventloop-GetStarted)。
 
 ![](https://user-gold-cdn.xitu.io/2017/12/2/16015434d2b8e8a8?w=800&h=444&f=png&s=77307)
 
 更多资源：
-* [https://github.com/getify/You-Dont-Know-JS/blob/master/async%20%26%20performance/ch2.md](https://github.com/getify/You-Dont-Know-JS/blob/master/async%20%26%20performance/ch2.md)
-* [https://github.com/getify/You-Dont-Know-JS/blob/master/async%20%26%20performance/ch3.md](https://github.com/getify/You-Dont-Know-JS/blob/master/async%20%26%20performance/ch3.md)
-* [http://nikgrozev.com/2017/10/01/async-await/](http://nikgrozev.com/2017/10/01/async-await/)
 
+- [https://github.com/getify/You-Dont-Know-JS/blob/master/async%20%26%20performance/ch2.md](https://github.com/getify/You-Dont-Know-JS/blob/master/async%20%26%20performance/ch2.md)
+- [https://github.com/getify/You-Dont-Know-JS/blob/master/async%20%26%20performance/ch3.md](https://github.com/getify/You-Dont-Know-JS/blob/master/async%20%26%20performance/ch3.md)
+- [http://nikgrozev.com/2017/10/01/async-await/](http://nikgrozev.com/2017/10/01/async-await/)
 
 ---
 
