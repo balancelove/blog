@@ -4,7 +4,7 @@
 
 ## 初体验
 
-我们看了 Vue 的初始化函数就会知道，在最后一步，它进行了 __vm.$mount(el)__ 的操作，而这个 $mount 在两个地方定义过，分别是在 __entry-runtime-with-compiler.js(简称：eMount)__ 和 __runtime/index.js(简称：rMount)__ 这两个文件里，那么这两个有什么区别呢？
+我们看了 Vue 的初始化函数就会知道，在最后一步，它进行了 **vm.\$mount(el)** 的操作，而这个 \$mount 在两个地方定义过，分别是在 **entry-runtime-with-compiler.js(简称：eMount)** 和 **runtime/index.js(简称：rMount)** 这两个文件里，那么这两个有什么区别呢？
 
 ```js
 // entry-runtime-with-compiler.js
@@ -52,7 +52,7 @@ Vue.prototype.$mount = function (
 
 在解析器中有一个非常重要的概念 AST，大家可以去自行了解一下。
 
-在 Vue 中，ASTNode 分几种不同类型，关于 ASTNode 的定义在 __flow/compile.js__ 里面，请看下图：
+在 Vue 中，ASTNode 分几种不同类型，关于 ASTNode 的定义在 **flow/compile.js** 里面，请看下图：
 
 ![astnode](./astnode.png)
 
@@ -78,15 +78,15 @@ Vue.prototype.$mount = function (
 在这个函数中，最重要的是 while 循环中的代码，而在解析过程中发挥重要作用的有这么几个正则表达式。
 
 ```js
-const attribute = /^\s*([^\s"'<>\/=]+)(?:\s*(=)\s*(?:"([^"]*)"+|'([^']*)'+|([^\s"'=<>`]+)))?/
-const ncname = '[a-zA-Z_][\\w\\-\\.]*'
-const qnameCapture = `((?:${ncname}\\:)?${ncname})`
-const startTagOpen = new RegExp(`^<${qnameCapture}`)
-const startTagClose = /^\s*(\/?)>/
-const endTag = new RegExp(`^<\\/${qnameCapture}[^>]*>`)
-const doctype = /^<!DOCTYPE [^>]+>/i
-const comment = /^<!\--/
-const conditionalComment = /^<!\[/
+const attribute = /^\s*([^\s"'<>\/=]+)(?:\s*(=)\s*(?:"([^"]*)"+|'([^']*)'+|([^\s"'=<>`]+)))?/;
+const ncname = '[a-zA-Z_][\\w\\-\\.]*';
+const qnameCapture = `((?:${ncname}\\:)?${ncname})`;
+const startTagOpen = new RegExp(`^<${qnameCapture}`);
+const startTagClose = /^\s*(\/?)>/;
+const endTag = new RegExp(`^<\\/${qnameCapture}[^>]*>`);
+const doctype = /^<!DOCTYPE [^>]+>/i;
+const comment = /^<!\--/;
+const conditionalComment = /^<!\[/;
 ```
 
 Vue 使用正则表达式去匹配开始结束标签、标签名、属性等等。
@@ -105,7 +105,7 @@ compile 其实要说要说非常多的篇幅，但是这里只能简单的理一
 
 ### 优化器
 
->  从代码中的注释我们可以看出，优化器的目的就是去找出 AST 中纯静态的子树：
+> 从代码中的注释我们可以看出，优化器的目的就是去找出 AST 中纯静态的子树：
 >
 > 1. 把纯静态子树提升为常量，每次重新渲染的时候就不需要创建新的节点了
 > 2. 在 patch 的时候就可以跳过它们
@@ -113,18 +113,15 @@ compile 其实要说要说非常多的篇幅，但是这里只能简单的理一
 optimize 的代码量没有 parse 那么多，我们来看看：
 
 ```js
-export function optimize (root: ?ASTElement, options: CompilerOptions) {
+export function optimize(root: ?ASTElement, options: CompilerOptions) {
   // 判断 root 是否存在
-  if (!root) return
+  if (!root) return;
   // 判断是否是静态的属性
   // 'type,tag,attrsList,attrsMap,plain,parent,children,attrs'
-  isStaticKey = genStaticKeysCached(options.staticKeys || '')
-  // 判断是否是平台保留的标签，html 或者 svg 的
-  isPlatformReservedTag = options.isReservedTag || no
-  // 第一遍遍历: 给所有静态节点打上是否是静态节点的标记
-  markStatic(root)
-  // 第二遍遍历:标记所有静态根节点
-  markStaticRoots(root, false)
+  isStaticKey = genStaticKeysCached(options.staticKeys || ''); // 判断是否是平台保留的标签，html 或者 svg 的
+  isPlatformReservedTag = options.isReservedTag || no; // 第一遍遍历: 给所有静态节点打上是否是静态节点的标记
+  markStatic(root); // 第二遍遍历:标记所有静态根节点
+  markStaticRoots(root, false);
 }
 ```
 
@@ -146,21 +143,25 @@ function markStatic (node: ASTNode) {
 刚刚我们说过，AST 节点分三种，在 isStatic 这个函数中我们对不同类型的节点做了判断：
 
 ```js
-function isStatic (node: ASTNode): boolean {
-  if (node.type === 2) { // expression
-    return false
+function isStatic(node: ASTNode): boolean {
+  if (node.type === 2) {
+    // expression
+    return false;
   }
-  if (node.type === 3) { // text
-    return true
+  if (node.type === 3) {
+    // text
+    return true;
   }
-  return !!(node.pre || (
-    !node.hasBindings && // no dynamic bindings
-    !node.if && !node.for && // not v-if or v-for or v-else
+  return !!(
+    node.pre ||
+    (!node.hasBindings && // no dynamic bindings
+    !node.if &&
+    !node.for && // not v-if or v-for or v-else
     !isBuiltInTag(node.tag) && // not a built-in
     isPlatformReservedTag(node.tag) && // not a component
-    !isDirectChildOfTemplateFor(node) &&
-    Object.keys(node).every(isStaticKey)
-  ))
+      !isDirectChildOfTemplateFor(node) &&
+      Object.keys(node).every(isStaticKey))
+  );
 }
 ```
 
@@ -169,7 +170,7 @@ function isStatic (node: ASTNode): boolean {
 1. 当这个节点的 type 为 2，也就是表达式节点的时候，很明显它不是一个静态节点，所以返回 false
 2. 当 type 为 3 的时候，也就是文本节点，那它就是一个静态节点，返回 true
 3. 如果你在元素节点中使用了 v-per 或者使用了 `<pre>` 标签，那么就会在这个 node 上加上 pre 为 true，那么这就是个静态节点
-4. 如果它是静态节点，那么需要它不能有动态的绑定、不能有 v-if、v-for、v-else 这些指令，不能是 slot 或者 component 标签、不是我们自定义的标签、没有父节点或者元素的父节点不能是带 v-for 的 template、 这个节点的属性都在 __type,tag,attrsList,attrsMap,plain,parent,children,attrs__ 里面，满足这些条件，就认为它是静态的节点。
+4. 如果它是静态节点，那么需要它不能有动态的绑定、不能有 v-if、v-for、v-else 这些指令，不能是 slot 或者 component 标签、不是我们自定义的标签、没有父节点或者元素的父节点不能是带 v-for 的 template、 这个节点的属性都在 **type,tag,attrsList,attrsMap,plain,parent,children,attrs** 里面，满足这些条件，就认为它是静态的节点。
 
 接下来，就开始对 AST 进行递归操作，标记静态的节点，至于里面做了哪些操作，可以到上面那个仓库里去看，这里就不展开了。
 
@@ -184,18 +185,17 @@ function isStatic (node: ASTNode): boolean {
 > 在这个函数中，我们将 AST 转换成为 render 函数字符串，代码量还是挺多的，我们可以来看一看。
 
 ```js
-export function generate (
+export function generate(
   ast: ASTElement | void,
   options: CompilerOptions
 ): CodegenResult {
-  // 这就是编译的一些参数
-  const state = new CodegenState(options)
-  // 生成 render 字符串
-  const code = ast ? genElement(ast, state) : '_c("div")'
+  // 这就是编译的一些参数
+  const state = new CodegenState(options); // 生成 render 字符串
+  const code = ast ? genElement(ast, state) : '_c("div")';
   return {
     render: `with(this){return ${code}}`,
     staticRenderFns: state.staticRenderFns
-  }
+  };
 }
 ```
 
@@ -209,36 +209,36 @@ with(this){return _c('div',{attrs:{"id":"demo"}},[(1>0)?_c('h1',[_v("Latest Vue.
 
 ```js
 // v-once
-target._o = markOnce
+target._o = markOnce;
 // 转换
-target._n = toNumber
-target._s = toString
+target._n = toNumber;
+target._s = toString;
 // v-for
-target._l = renderList
+target._l = renderList;
 // slot
-target._t = renderSlot
+target._t = renderSlot;
 // 是否相等
-target._q = looseEqual
+target._q = looseEqual;
 // 检测数组里是否有相等的值
-target._i = looseIndexOf
+target._i = looseIndexOf;
 // 渲染静态树
-target._m = renderStatic
+target._m = renderStatic;
 // 过滤器处理
-target._f = resolveFilter
+target._f = resolveFilter;
 // 检查关键字
-target._k = checkKeyCodes
+target._k = checkKeyCodes;
 // v-bind
-target._b = bindObjectProps
+target._b = bindObjectProps;
 // 创建文本节点
-target._v = createTextVNode
+target._v = createTextVNode;
 // 创建空节点
-target._e = createEmptyVNode
+target._e = createEmptyVNode;
 // 处理 scopeslot
-target._u = resolveScopedSlots
+target._u = resolveScopedSlots;
 // 处理事件绑定
-target._g = bindObjectListeners
+target._g = bindObjectListeners;
 // 创建 VNode 节点
-vm._c = (a, b, c, d) => createElement(vm, a, b, c, d, false)
+vm._c = (a, b, c, d) => createElement(vm, a, b, c, d, false);
 ```
 
 我们可以很清楚的看到，最后生成了这么一个渲染字符串，那么我们要如何去使用它呢？其实在后面进行渲染的时候，我们进行了 `new Function(render)`，然后我们就可以使用 render 函数了。

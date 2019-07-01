@@ -13,7 +13,7 @@
 图中有几个重要的模块：
 
 - **监听者(Observer):** 这个模块的主要功能是给 data 中的数据增加 `getter` 和 `setter`，以及往观察者列表中增加观察者，当数据变动时去通知观察者列表。
-- **观察者列表(Dep):** 这个模块的主要作用是维护一个属性的观察者列表，当这个属性触发 `getter` 时将观察者添加到列表中，当属性触发 `setter` 造成数据变化时通知所有观察者。 
+- **观察者列表(Dep):** 这个模块的主要作用是维护一个属性的观察者列表，当这个属性触发 `getter` 时将观察者添加到列表中，当属性触发 `setter` 造成数据变化时通知所有观察者。
 - **观察者(Watcher):** 这个模块的主要功能是对数据进行观察，一旦收到数据变化的通知就去改变视图。
 
 我们简化一下 Vue 里的各种代码，只关注我们刚刚说的那些东西，实现一个简单版的 Vue。
@@ -35,22 +35,25 @@
 <script src="vue/watcher.js"></script>
 <script src="vue/dep.js"></script>
 <script>
-const vm = new Vue({
-  el: '#app',
-  data: {
-    message: 'Hello Vue.js!'
-  },
-  methods: {
-    reverseMessage: function () {
-      this.message = this.message.split('').reverse().join('')
+  const vm = new Vue({
+    el: '#app',
+    data: {
+      message: 'Hello Vue.js!'
+    },
+    methods: {
+      reverseMessage: function() {
+        this.message = this.message
+          .split('')
+          .reverse()
+          .join('');
+      }
+    },
+    mounted: function() {
+      setTimeout(() => {
+        this.message = 'I am changed after mounte';
+      }, 2000);
     }
-  },
-  mounted: function() {
-    setTimeout(() => {
-      this.message = 'I am changed after mounte';
-    }, 2000);
-  },
-});
+  });
 </script>
 ```
 
@@ -89,7 +92,7 @@ class Vue {
       enumerable: false,
       configurable: true,
       get: function() {
-        return this.data[key]
+        return this.data[key];
       },
       set: function(newVal) {
         this.data[key] = newVal;
@@ -127,7 +130,7 @@ class Observer {
       this.defineReactive(key, this.data[key]);
     });
   }
-  
+
   defineReactive(key, val) {
     const dep = new Dep();
     const observeChild = observe(val);
@@ -135,13 +138,13 @@ class Observer {
       enumerable: true,
       configurable: true,
       get() {
-        if(Dep.target) {
+        if (Dep.target) {
           dep.addSub(Dep.target);
         }
         return val;
       },
       set(newVal) {
-        if(newVal === val) {
+        if (newVal === val) {
           return;
         }
         val = newVal;
@@ -153,7 +156,7 @@ class Observer {
 }
 
 function observe(value, vm) {
-  if(!value || typeof value !== 'object') {
+  if (!value || typeof value !== 'object') {
     return;
   }
   return new Observer(value);
@@ -184,14 +187,14 @@ class Dep {
 Dep.target = null;
 ```
 
-在 Dep 中我们维护一个观察者列表(subs)，有两个基础的方法，一个是往列表中添加观察者，一个是通知列表中所有的观察者。可以看到我们最后一行的 `Dep.target = null;`，可能大家会好奇，这东西是干什么用的，其实很好理解，我们定义了一个全局的变量 `Dep.target`，又因为 JavaScript 是单线程的，同一时间只可能有一个地方对其进行操作，那么我们就能够在观察者触发 `getter` 的时候，将自己赋值给 `Dep.target`，然后添加到对应的观察者列表中，这也就是上面的 `Observer` 的 `getter` 中有个对 `Dep.target` 的判断的原因，然后当 __Watcher__ 被添加到列表中，这个全局变量又会被设置成 `null`。当然了这里面有些东西还需要在 Watcher 中实现，我们接下来就来看看 __Watcher__ 如何实现。
+在 Dep 中我们维护一个观察者列表(subs)，有两个基础的方法，一个是往列表中添加观察者，一个是通知列表中所有的观察者。可以看到我们最后一行的 `Dep.target = null;`，可能大家会好奇，这东西是干什么用的，其实很好理解，我们定义了一个全局的变量 `Dep.target`，又因为 JavaScript 是单线程的，同一时间只可能有一个地方对其进行操作，那么我们就能够在观察者触发 `getter` 的时候，将自己赋值给 `Dep.target`，然后添加到对应的观察者列表中，这也就是上面的 `Observer` 的 `getter` 中有个对 `Dep.target` 的判断的原因，然后当 **Watcher** 被添加到列表中，这个全局变量又会被设置成 `null`。当然了这里面有些东西还需要在 Watcher 中实现，我们接下来就来看看 **Watcher** 如何实现。
 
 ### Watcher
 
 在写代码之前我们先分析一下，Watcher 需要一些什么基础功能，Watcher 需要订阅 Dep，同时需要更新 View，那么在代码中我们实现两个函数，一个订阅，一个更新。那么我们如何做到订阅呢？看了上面的代码我们应该有个初步的认识，我们需要在 `getter` 中去将 Watcher 添加到 Dep 中，也就是依靠我们上面说的 `Dep.target`，而更新我们使用回调就能做到，我们看代码。
 
 ```js
- class Watcher {
+class Watcher {
   constructor(vm, exp, cb) {
     this.vm = vm;
     this.exp = exp;
@@ -208,7 +211,7 @@ Dep.target = null;
 
   update() {
     const newVal = this.vm.data[this.exp.trim()];
-    if(this.value !== newVal) {
+    if (this.value !== newVal) {
       this.value = newVal;
       this.cb.call(this.vm, newVal);
     }
@@ -218,7 +221,7 @@ Dep.target = null;
 
 那么，我们有了 Watcher 之后要在什么地方去调用它呢？想这个问题之前，我们要思考一下，我们如何拿到你在 `template` 中写的各种 `{{message}}`、`v-text`等等指令以及变量。对，我们还有一个模版编译的过程，那么我们是不是可以在编译的时候去触发 `getter`，然后我们就完成了对这个变量的观察者的添加，好了说了那么多，我们来看下下面的模块如何去做。
 
-### Compile 
+### Compile
 
 Compile 主要要完成的工作就是把 template 中的模板编译成 HTML，在编译的时候拿到变量的过程也就触发了这个数据的 `getter`，这时候就会把观察者添加到观察者列表中，同时也会在数据变动的时候，触发回调去更新视图。我们下面就来看看关于 Compile 这个模块该怎么去完成。
 
@@ -230,14 +233,14 @@ const nodeType = {
   },
   isText(node) {
     return node.nodeType === 3;
-  },
+  }
 };
 
 // 更新视图
 const updater = {
   text(node, val) {
     node.textContent = val;
-  },
+  }
   // 还有 model 啥的，但实际都差不多
 };
 
@@ -250,7 +253,7 @@ class Compile {
   }
 
   init() {
-    if(this.el) {
+    if (this.el) {
       this.fragment = this.nodeToFragment(this.el);
       this.compileElement(this.fragment);
       this.el.appendChild(this.fragment);
@@ -263,7 +266,7 @@ class Compile {
     let child = el.firstChild;
 
     // 将原生节点转移到 fragment
-    while(child) {
+    while (child) {
       fragment.appendChild(child);
       child = el.firstChild;
     }
@@ -273,20 +276,20 @@ class Compile {
   // 根据节点类型不同进行不同的编译
   compileElement(el) {
     const childNodes = el.childNodes;
-    
-    [].slice.call(childNodes).forEach((node) => {
+
+    [].slice.call(childNodes).forEach(node => {
       const reg = /\{\{(.*)\}\}/;
       const text = node.textContent;
 
       // 根据不同的 node 类型，进行编译，分别编译指令以及文本节点
-      if(nodeType.isElement(node)) {
+      if (nodeType.isElement(node)) {
         this.compileEl(node);
-      } else if(nodeType.isText(node) && reg.test(text)) {
+      } else if (nodeType.isText(node) && reg.test(text)) {
         this.compileText(node, reg.exec(text)[1]);
       }
 
       // 递归的对元素节点进行深层编译
-      if(node.childNodes && node.childNodes.length) {
+      if (node.childNodes && node.childNodes.length) {
         this.compileElement(node);
       }
     });
@@ -296,7 +299,7 @@ class Compile {
   compileText(node, exp) {
     const value = this.vm[exp.trim()];
     updater.text(node, value);
-    new Watcher(this.vm, exp, (val) => {
+    new Watcher(this.vm, exp, val => {
       updater.text(node, val);
     });
   }
@@ -305,11 +308,11 @@ class Compile {
     const attrs = node.attributes;
     Object.values(attrs).forEach(attr => {
       var name = attr.name;
-      if(name.indexOf('v-') >= 0) {
+      if (name.indexOf('v-') >= 0) {
         const exp = attr.value;
         // 只做事件绑定
         const eventDir = name.substring(2);
-        if(eventDir.indexOf('on') >= 0) {
+        if (eventDir.indexOf('on') >= 0) {
           this.compileEvent(node, eventDir, exp);
         }
       }
@@ -320,7 +323,7 @@ class Compile {
     const eventType = dir.split(':')[1];
     const cb = this.vm.methods[exp];
 
-    if(eventType && cb) {
+    if (eventType && cb) {
       node.addEventListener(eventType, cb.bind(this.vm));
     }
   }
@@ -339,6 +342,6 @@ Vue 的设计很有意思，在学习之中也能有很多不一样的感受，�
 
 最后，因为 [Vue 2.0] 已经出来一段时间了，源码也有很多的变动，生命周期的变化、Virtual DOM 等等，还有比较感兴趣的 diff 算法，这些后续会继续研究的，谢谢。
 
-[Vue 2.0]:https://cn.vuejs.org/v2/guide/
+[vue 2.0]: https://cn.vuejs.org/v2/guide/
 
 > 如果各位看官看的还行，可以到 [GitHub](https://github.com/balancelove/readingNotes) 里给我一颗小小的 star 支持一下，谢谢。

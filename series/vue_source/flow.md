@@ -30,12 +30,11 @@ flow 支持以下两种类型检查的方式：
 
 ```js
 /*@flow*/
-function split(str:string) : string {
-    return str.split('');
+function split(str: string): string {
+  return str.split('');
 }
 ```
 
 这样就写好了。当我们函数的输入和输出不是 string 类型的时候就会报错。
 
 至于更加详细的注释内容请大家自行到 flow 的官网查看。
-
