@@ -48,3 +48,6 @@
 1. [【Nginx】net::ERR_INCOMPLETE_CHUNKED_ENCODING](./tips/nginx/err_incomplete_chunked_encoding.md)
 2. [【Linux】find 命令查找多文件](./tips/linux/find.md)
 3. [【Linux】No space left on device](./tips/linux/no_space_left.md)
+4. [【Git】File exists](./tips/git/file_exists.md)
+5. [【Git】git 多账号管理](./tips/git/multi_account.md)
+6. [【Git】如何批量修改 commit 信息](./tips/git/update_userInfo.md)
