@@ -38,6 +38,8 @@
 10. [前端工程化](./article/fe_project/index.md)
 11. [Grid 布局发车啦](./article/grid/index.md)
 12. [Timing Attack](./article/timing_attack/index.md)
+13. [换个角度学 Webpack](./article/webpack/index.md)
+14. [Http 缓存那些事](./article/http_cache/index.md)
 
 ## 活动知识整理
 
