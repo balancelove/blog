@@ -8,11 +8,8 @@
 
 ```json
 {
-    "private": true,
-    "workspaces": [
-        "admin",
-        "server"
-    ]
+  "private": true,
+  "workspaces": ["admin", "server"]
 }
 ```
 
