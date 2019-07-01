@@ -35,18 +35,16 @@
 ```js
 // babel-loader 配置
 module: {
-    rules: [
-        {
-            test: /\.js$/,
-            exclude: /(node_modules|bower_components)/,
-            use: {
-                loader: 'babel-loader',
-                options: [
-                    require('babel-plugin-transform-object-rest-spread')
-                ]
-            }
-        }
-    ]
+  rules: [
+    {
+      test: /\.js$/,
+      exclude: /(node_modules|bower_components)/,
+      use: {
+        loader: 'babel-loader',
+        options: [require('babel-plugin-transform-object-rest-spread')]
+      }
+    }
+  ];
 }
 ```
 
@@ -91,7 +89,5 @@ webpack 可以帮助我们实现增量更新：
 hash 与 chunkhash，hash 是整个项目，只要有一个文件有变动就会更新所有编译后的文件，明显不符合增量更新，而 chunkhash 是符合的。
 
 css 文件使用 contenthash 来进行增量更新。
-
-
 
 PS：剩下的本地开发服务器 webpack 有相应的解决方案，部署倾向于使用 docker 的容器化技术，方便快捷，工作流是常用的 git flow 工作流。

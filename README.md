@@ -34,6 +34,7 @@
 7. [大话 SPA router](./article/spa/index.md)
 8. [JS 看不懂的 []+{}](./article/type_change/index.md)
 9. [es6 模块化与 node 的模块化](./article/module/index.md)
+10. [前端工程化](./article/fe_project/index.md)
 
 ## 活动知识整理
 
