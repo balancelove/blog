@@ -12,6 +12,7 @@
 ## 系列文章整理
 
 1. [JavaScript 是如何工作的？](./series/how_javascript/index.md)
+2. [JavaScript 设计模式了解](./series/design_pattern/index.md)
 
 ## 面试题目收集整理
 
