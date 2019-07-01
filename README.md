@@ -9,6 +9,7 @@
 3. [前端相关资源整理](#前端相关资源整理)
 4. [随笔文章整理](#随笔文章整理)
 5. [活动知识整理](#活动知识整理)
+6. [工作小 Tips 总结](#Tips)
 
 ## 系列文章整理
 
@@ -35,7 +36,11 @@
 8. [JS 看不懂的 []+{}](./article/type_change/index.md)
 9. [es6 模块化与 node 的模块化](./article/module/index.md)
 10. [前端工程化](./article/fe_project/index.md)
+11. [Grid 布局发车啦](./article/grid/index.md)
+12. [Timing Attack](./article/timing_attack/index.md)
 
 ## 活动知识整理
 
 1. [FCC 2018 前端技术大会总结](./activity/fcc_frontEnd_2018/index.md)
+
+## Tips
