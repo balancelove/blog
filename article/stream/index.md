@@ -8,8 +8,10 @@
 const fs = require('fs');
 const file = fs.createWriteStream('./test.txt');
 
-for(let i=0; i<= 1e6; i++) {
-  file.write('Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n');
+for (let i = 0; i <= 1e6; i++) {
+  file.write(
+    'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n'
+  );
 }
 
 file.end();
@@ -25,7 +27,7 @@ const server = http.createServer();
 server.on('request', (req, res) => {
   fs.readFile('./test.txt', (err, data) => {
     if (err) throw err;
-  
+
     res.end(data);
   });
 });
@@ -83,7 +85,7 @@ server.listen(3000);
 
 说可读流之前，先划重点：
 
-1. read() 和 _read()
+1. read() 和 \_read()
 2. flowing 和 pause 模式
 3. 事件 readable 和 data
 
@@ -101,15 +103,14 @@ server.listen(3000);
 Readable.prototype.on = function(ev, fn) {
   const res = Stream.prototype.on.call(this, ev, fn);
   const state = this._readableState;
-  if(ev === 'data') {
+  if (ev === 'data') {
     state.readableListening = this.listenerCount('readable') > 0;
-    if (state.flowing !== false)
-      this.resume();
-  } else if ('readable'){
-      //...
+    if (state.flowing !== false) this.resume();
+  } else if ('readable') {
+    //...
   }
   return res;
-}
+};
 ```
 
 我们可以关注到，当我们监听 `data` 事件的时候，因为当前初始化标志位为 `null`，所以会去调用 `resume()`，这时候就会进入 flowing 模式，同时，当可读流调用 `pipe` 的时候会去监听 `data` 事件，也会进入 `flowing` 模式。
@@ -144,7 +145,7 @@ Readable.prototype.on = function(ev, fn) {
 
 可写流是作为下流来消耗上游的数据，那么开始划重点：
 
-1. _write 和 write
+1. \_write 和 write
 2. finish 和 prefinishi 事件
 
 和可读流一样，我们需要在初始化流的时候提供一个 `_write()` 方法，用来向底层写数据，而 `write()` 方法是用来向可写流提供数据的，注意在 `_write` 方法中的第三个参数在源码中是一个叫 `onwrite` 的方法，这是为了表明当前写入数据已经完成了，可以开始写入下面的数据了。可写流的终止信号是调用 `end()` 方法。
@@ -162,19 +163,19 @@ Duplex 的代码量非常少，因为它同时继承了可读流和可写流，�
 我们去看看源码，Transform 自己实现了 `_write` 和 `_read` 方法，注意的是这里使用的是同一个缓存，我们来看这么一段代码。
 
 ```js
-const { Transform } = require('stream')
+const { Transform } = require('stream');
 
 var transform = Transform({
-  transform: function (buf, _, next) {
-    next(null, buf.toString().replace('a', 'b'))
+  transform: function(buf, _, next) {
+    next(null, buf.toString().replace('a', 'b'));
   }
-})
+});
 
 // 'b'
-transform.pipe(process.stdout)
+transform.pipe(process.stdout);
 
-transform.write('a')
-transform.end()
+transform.write('a');
+transform.end();
 ```
 
 上面的代码主要流程是这样的，Transform 调用了继承自可写流的 `write` 方法，然后这个方法调用自己实现的 `_write` 将写入的数据存到了 Transform 的缓存中，然后将其转换成 buffer，在其后 `_read` 函数被调用，在这个函数中调用了在初始化的时候传入转换函数 `_transform` 对数据进行转换，在转换过后就是 `readable.pipe(writable)` 的模式了。

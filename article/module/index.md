@@ -12,24 +12,25 @@ ES6 的设计思想是尽量的静态化，这样在编译的时候就能够确�
 
 1. 模块的加载方式
 
-    ```js
-    // CommonJS 是将整个模块加载进来
-    const { a, b, c } = require('./m.js');
-    // 相当于
-    const _m = require('./m.js');
-    const a = _m.a;
-    const b = _m.b;
-    const c = _m.c;
+   ```js
+   // CommonJS 是将整个模块加载进来
+   const { a, b, c } = require('./m.js');
+   // 相当于
+   const _m = require('./m.js');
+   const a = _m.a;
+   const b = _m.b;
+   const c = _m.c;
 
-    // ES6 是静态加载，在编译时已经完成了模块的加载，也就是说它只加载了这三个变量，其他的都没有加载
-    const { a, b, c } = require('./m.js');
-    ```
+   // ES6 是静态加载，在编译时已经完成了模块的加载，也就是说它只加载了这三个变量，其他的都没有加载
+   const { a, b, c } = require('./m.js');
+   ```
+
 2. 模块的加载结果
 
-    ```js
-    // CommonJS 输出的是值的拷贝，也就是说，一旦输入一个值，模块再变化也不会影响
-    // ES6 模块输出的是值的引用
-    ```
+   ```js
+   // CommonJS 输出的是值的拷贝，也就是说，一旦输入一个值，模块再变化也不会影响
+   // ES6 模块输出的是值的引用
+   ```
 
 ## ES6 模块化
 

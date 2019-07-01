@@ -25,6 +25,16 @@
 
 ## 随笔文章整理
 
+1. [试炼之石 - Performance](./article/performance/index.md)
+2. [数字证书那些事](./article/ca/index.md)
+3. [一道面试题引发的血案](./article/event_loop/index.md)
+4. [怎么写一个高逼格的 README](./article/readme/index.md)
+5. [给你的项目装个探头 — Sentry](./article/sentry/index.md)
+6. [流“忙”](./article/stream/index.md)
+7. [大话 SPA router](./article/spa/index.md)
+8. [JS 看不懂的 []+{}](./article/type_change/index.md)
+9. [es6 模块化与 node 的模块化](./article/module/index.md)
+
 ## 活动知识整理
 
 1. [FCC 2018 前端技术大会总结](./activity/fcc_frontEnd_2018/index.md)

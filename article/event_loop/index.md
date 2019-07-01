@@ -16,17 +16,17 @@ process.nextTick(() => {
 });
 
 fs.readFile('./index.js', (err, data) => {
-  if(err) return;
+  if (err) return;
   console.log('I/O callback');
   process.nextTick(() => {
-      console.log('nextTick 2');
+    console.log('nextTick 2');
   });
 });
 
 setImmediate(() => {
   console.log('immediate 1');
   process.nextTick(() => {
-      console.log('nextTick 3');
+    console.log('nextTick 3');
   });
 });
 
@@ -40,20 +40,20 @@ setTimeout(() => {
 new Promise((resolve, reject) => {
   console.log('promise run');
   process.nextTick(() => {
-      console.log('nextTick 5');
+    console.log('nextTick 5');
   });
   resolve('promise then');
   setImmediate(() => {
-      console.log('immediate 2');
+    console.log('immediate 2');
   });
 }).then(res => {
   console.log(res);
 });
 ```
 
-__note:__ 上面的代码执行环境是 node v10.7.0，浏览器的事件循环和 node 还是有一点区别的，有兴趣的可以自己找资料看一看。
+**note:** 上面的代码执行环境是 node v10.7.0，浏览器的事件循环和 node 还是有一点区别的，有兴趣的可以自己找资料看一看。
 
-好了，上面的代码涉及到定时器、nextTick、Promise、setImmediate 和  I/O 操作。头皮有点小发麻哈，大家想好答案了么？检查一下吧！
+好了，上面的代码涉及到定时器、nextTick、Promise、setImmediate 和 I/O 操作。头皮有点小发麻哈，大家想好答案了么？检查一下吧！
 
 ```js
 promise run
@@ -173,7 +173,7 @@ function setTimeout(callback, after, arg1, arg2, arg3) {
 }
 ```
 
-我们看到它 new 了一个  Timeout 类，我们顺着这条线索找到了 Timeout 的构造函数：
+我们看到它 new 了一个 Timeout 类，我们顺着这条线索找到了 Timeout 的构造函数：
 
 ```js
 function Timeout(callback, after, args, isRepeat) {
@@ -291,23 +291,21 @@ refedLists = {
 
 ```js
 function _tickCallback() {
-    let tock;
-    do {
-      while (tock = queue.shift()) {
-        // ...
-        const callback = tock.callback;
-        if (tock.args === undefined)
-          callback();
-        else
-          Reflect.apply(callback, undefined, tock.args);
+  let tock;
+  do {
+    while ((tock = queue.shift())) {
+      // ...
+      const callback = tock.callback;
+      if (tock.args === undefined) callback();
+      else Reflect.apply(callback, undefined, tock.args);
 
-        emitAfter(asyncId);
-      }
-      tickInfo[kHasScheduled] = 0;
-      runMicrotasks();
-    } while (!queue.isEmpty() || emitPromiseRejectionWarnings());
-    tickInfo[kHasPromiseRejections] = 0;
-  }
+      emitAfter(asyncId);
+    }
+    tickInfo[kHasScheduled] = 0;
+    runMicrotasks();
+  } while (!queue.isEmpty() || emitPromiseRejectionWarnings());
+  tickInfo[kHasPromiseRejections] = 0;
+}
 ```
 
 我们看到了什么？在将 nextTick 的回调执行完之后，它执行了 `runMicrotasks`。一切都真相大白了，microTasks 的执行时机是当执行完所有的 nextTick 的回调之后。那 nextTick 又是在什么时候执行的呢？
@@ -388,23 +386,23 @@ function processTimers(now) {
 
 ### 第一步
 
-首先运行 Promise 里的代码，__输出了 promise run__，然后 promise.resolve 将 then 放入 microTasks。
+首先运行 Promise 里的代码，**输出了 promise run**，然后 promise.resolve 将 then 放入 microTasks。
 
 ### 第二步
 
-这里要提到的一点是 nextTick 在注册之后，bootstrap 构建结束后运行`SetupNextTick`函数，这时候就会清空 nextTickQueue 和 MicroTasks，所以__输出 nextTick 1、nextTick 5、promise then__。
+这里要提到的一点是 nextTick 在注册之后，bootstrap 构建结束后运行`SetupNextTick`函数，这时候就会清空 nextTickQueue 和 MicroTasks，所以**输出 nextTick 1、nextTick 5、promise then**。
 
 ### 第三步
 
-在 bootstrap 之后便进入了 event loop，第一个阶段 timers，这时 timeout 1 定时器时间到期，执行回调__输出 timeout 1__，timerList 没有其他定时器了，去清空 nextTickQueue 和 MicroTasks，没有任务，这时继续下阶段，这时候有 immediate，所以跳过 poll，进入 check，执行 immediate 回调，__输出 immediate 1 和 immediate 2__，并将 nextTick 3 推入 nextTickQueue，阶段完成 immediateQueue 没有需要处理的东西了，就去清空 nextTickQueue 和 MicroTasks __输出 nextTick 3__。
+在 bootstrap 之后便进入了 event loop，第一个阶段 timers，这时 timeout 1 定时器时间到期，执行回调**输出 timeout 1**，timerList 没有其他定时器了，去清空 nextTickQueue 和 MicroTasks，没有任务，这时继续下阶段，这时候有 immediate，所以跳过 poll，进入 check，执行 immediate 回调，**输出 immediate 1 和 immediate 2**，并将 nextTick 3 推入 nextTickQueue，阶段完成 immediateQueue 没有需要处理的东西了，就去清空 nextTickQueue 和 MicroTasks **输出 nextTick 3**。
 
 ### 第四步
 
-在这一轮，文件读取完成，并且 timers 没到期，进入 poll 阶段，超时时间设置为 timeout 2 的时间，执行回调__输出 I/O callback__，并且向 nextTickQueue 推入 nextTick 2。阻塞过程中没有其他的 I/O 事件，去清空 nextTickQueue 和 MicroTasks，__输出 nextTick 2__。
+在这一轮，文件读取完成，并且 timers 没到期，进入 poll 阶段，超时时间设置为 timeout 2 的时间，执行回调**输出 I/O callback**，并且向 nextTickQueue 推入 nextTick 2。阻塞过程中没有其他的 I/O 事件，去清空 nextTickQueue 和 MicroTasks，**输出 nextTick 2**。
 
 ### 第五步
 
-这时候又到了 timers 阶段，执行 timeout 2 的回调，__输出 timeout 2__，将 nextTick 4 推入 nextTickQueue，这时 timeList 已经没有定时器了，清空 nextTickQueue 和 MicroTasks __输出 nextTick 4__。
+这时候又到了 timers 阶段，执行 timeout 2 的回调，**输出 timeout 2**，将 nextTick 4 推入 nextTickQueue，这时 timeList 已经没有定时器了，清空 nextTickQueue 和 MicroTasks **输出 nextTick 4**。
 
 ## 总结
 

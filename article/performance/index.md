@@ -1,4 +1,4 @@
-# 试炼之石-Performance
+# 试炼之石 - Performance
 
 > 最近在阅读 Vue 的源码的时候去溜达了一圈以前没有关注过的几个 API，比如 mark、measure 等等，于是总结一下前端监控利器 performance 相关的知识。
 
@@ -30,7 +30,7 @@ t.wait = timing.responseStart - timing.navigationStart;
 
 其实我们能从这些时间里还能够得到非常多的信息，上面都是一些很常用的时间，我们可以从这些信息中获知整个页面的整体性能。
 
-比如说，当DNS 查询时间长时，这时候你就要考虑是不是使用的域名太多了，或者有没有做 DNS 预解析， 关于 DNS 预解析要注意的是在 HTTP 协议下 a 标签是默认开启的，而 HTTPS 是默认关闭的，需要自己开启。
+比如说，当 DNS 查询时间长时，这时候你就要考虑是不是使用的域名太多了，或者有没有做 DNS 预解析， 关于 DNS 预解析要注意的是在 HTTP 协议下 a 标签是默认开启的，而 HTTPS 是默认关闭的，需要自己开启。
 
 当重定向时间长的时候，你就可以去看看代码里这样的情况，比如说 `https://baidu.com` 就会重定向到 `https://www.baidu.com`，当然了，重定向的情况不止这一种，还需要根据自身项目去优化重定向的时间。
 
@@ -41,7 +41,7 @@ t.wait = timing.responseStart - timing.navigationStart;
 先看一段 Vue 的源码：
 
 ```js
-const perf = inBrowser && window.performance
+const perf = inBrowser && window.performance;
 /* istanbul ignore if */
 if (
   perf &&
@@ -50,13 +50,13 @@ if (
   perf.clearMarks &&
   perf.clearMeasures
 ) {
-  mark = tag => perf.mark(tag)
+  mark = tag => perf.mark(tag);
   measure = (name, startTag, endTag) => {
-    perf.measure(name, startTag, endTag)
-    perf.clearMarks(startTag)
-    perf.clearMarks(endTag)
-    perf.clearMeasures(name)
-  }
+    perf.measure(name, startTag, endTag);
+    perf.clearMarks(startTag);
+    perf.clearMarks(endTag);
+    perf.clearMeasures(name);
+  };
 }
 ```
 
@@ -69,10 +69,10 @@ performance.mark() 和 performance.clearMarks() 是一组函数，我们可以�
 ```js
 function per() {
   performance.mark('per_begin');
-  for(const a = 1; a < 10000;a++) {}
+  for (const a = 1; a < 10000; a++) {}
   performance.mark('per_end');
 }
-per();  // 这时候我们调用 performance.getEntriesByType('mark') 就可以看到刚刚我们标记的两个时间戳了
+per(); // 这时候我们调用 performance.getEntriesByType('mark') 就可以看到刚刚我们标记的两个时间戳了
 // 我们使用 measure 来计算这两个标记点之间所消耗的时间
 performance.measure('per', 'per_begin', 'per_end'); // 通过 performance.getEntriesByName('per') 就可以看到 measure 的时间了
 ```
@@ -85,12 +85,12 @@ Vue 的源码中对这两个方法进行了封装，从实验中我们能够看�
 
 ```js
 const observer = new PerformanceObserver(list => {
-    list.getEntries().forEach(entry => {
-        console.log(`${entry.name}: ${entry.duration}`);
-    });
+  list.getEntries().forEach(entry => {
+    console.log(`${entry.name}: ${entry.duration}`);
+  });
 });
 observer.observe({
-    entryTypes: ['measure']
+  entryTypes: ['measure']
 });
 ```
 
@@ -115,11 +115,11 @@ performance.getEntries();
 
 我们可以得到下面的输出：
 
-![](./performance/getEntries.png)
+![](./getEntries.png)
 
 这个 API 返回的是全部加载成功的资源，那么同时我们可以通过 document 去拿到我们要加载的所有资源。
 
-![](./performance/tagName.png)
+![](./tagName.png)
 
 这时候，我们就能够通过这两个数组来看资源的加载情况了。
 
@@ -130,5 +130,5 @@ performance 这个 API 出来时间也很长了，但是以前一直没有了解
 关于 performance 的相关资源都在下面，有兴趣的可以看看：
 
 - MDN: https://developer.mozilla.org/zh-CN/docs/Web/API/Performance
-- 使用性能API快速分析web前端性能: https://segmentfault.com/a/1190000004010453
+- 使用性能 API 快速分析 web 前端性能: https://segmentfault.com/a/1190000004010453
 - window.performance 详解: https://github.com/fredshare/blog/issues/5

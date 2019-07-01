@@ -22,10 +22,10 @@ So，单页应用的优点是啥呢？
 
 在 HTML5 中，我们可以发现 History 多出了几个 API，我们来一起走一遍：
 
-1. __history.pushState( data, title[, url] ):__ 顾名思义，往历史记录栈栈顶添加一条数据，data 会作为触发 popstate 事件的时候的参数，titile 为标题，url 为页面地址。
-2. __history.replaceState( data, title[, url] ):__ 这个方法是用来更换历史记录的。
-3. __history.state:__ 获取当前历史栈栈顶数据。
-4. __event -> popstate:__ 当用户点击浏览器回退或者前进按钮就会触发 popstate 事件。
+1. **history.pushState( data, title[, url] ):** 顾名思义，往历史记录栈栈顶添加一条数据，data 会作为触发 popstate 事件的时候的参数，titile 为标题，url 为页面地址。
+2. **history.replaceState( data, title[, url] ):** 这个方法是用来更换历史记录的。
+3. **history.state:** 获取当前历史栈栈顶数据。
+4. **event -> popstate:** 当用户点击浏览器回退或者前进按钮就会触发 popstate 事件。
 
 我们来搞一个简单的例子，就知道 history 是怎么做的了。
 
@@ -41,23 +41,31 @@ So，单页应用的优点是啥呢？
 ```js
 const routes = document.querySelectorAll('.route');
 routes.forEach(route => {
-    route.addEventListener('click', e => {
-        e.preventDefault();
-        // 在这里面，我们也是可以通过参数的不同，然后渲染不同的页面。
-        const path = route.getAttribute('path');
-        window.history.pushState({ public: 'data' }, null, path);
-    }, false);
+  route.addEventListener(
+    'click',
+    e => {
+      e.preventDefault();
+      // 在这里面，我们也是可以通过参数的不同，然后渲染不同的页面。
+      const path = route.getAttribute('path');
+      window.history.pushState({ public: 'data' }, null, path);
+    },
+    false
+  );
 });
 
-window.addEventListener('popstate', e => {
+window.addEventListener(
+  'popstate',
+  e => {
     // 比如说在这里面可以通过路径的不同，然后去渲染不同的页面。
-}, false);
+  },
+  false
+);
 ```
 
 我们首先是通过点击，然后将 data、url 等参数 push 到栈里面，然后渲染页面，如果说我们通过浏览器的回退或者前进，就会触发 popstate，然后通过不同路径进行页面渲染，其实 history 就是这么一个基本原理。
 
 ### Hash
 
-这种方案就是去监听 hash 的变化，然后去做相应的操作，其实非常简单，我们需要用到 __location.hash__ 和 __hashchange__ 这个事件就好了，很简单，和上面的操作差不多这里就不说了。
+这种方案就是去监听 hash 的变化，然后去做相应的操作，其实非常简单，我们需要用到 **location.hash** 和 **hashchange** 这个事件就好了，很简单，和上面的操作差不多这里就不说了。
 
 > 如果各位看官看的还行，可以到 [GitHub](https://github.com/balancelove/readingNotes) 里给我一颗小小的 star 支持一下，谢谢。
