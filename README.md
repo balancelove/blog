@@ -46,3 +46,5 @@
 ## Tips
 
 1. [【Nginx】net::ERR_INCOMPLETE_CHUNKED_ENCODING](./tips/nginx/err_incomplete_chunked_encoding.md)
+2. [【Linux】find 命令查找多文件](./tips/linux/find.md)
+3. [【Linux】No space left on device](./tips/linux/no_space_left.md)
