@@ -101,12 +101,12 @@
 
 ## 圣杯布局和双飞翼
 
-优点： 圣杯布局使用float、负margin和relative，不需要添加额外标签。.main元素设置padding，为两侧定宽元素留出位置。内容元素设置100%宽度，占据中间位置。而两侧定宽元素通过设置负margin和relative的偏移属性配合，到达相应位置
+优点： 圣杯布局使用 float、负 margin 和 relative，不需要添加额外标签。.main 元素设置 padding，为两侧定宽元素留出位置。内容元素设置 100%宽度，占据中间位置。而两侧定宽元素通过设置负 margin 和 relative 的偏移属性配合，到达相应位置
 
 缺点: 并没有实现等高布局；使用了相对定位，扩展性不好
 
-优点：双飞翼布局在圣杯布局的基础上，通过为.main元素外添加一层div结构，不使用相对定位。在.main元素上设置margin。两侧的定宽列通过负margin来占据.main元素的margin区域
+优点：双飞翼布局在圣杯布局的基础上，通过为.main 元素外添加一层 div 结构，不使用相对定位。在.main 元素上设置 margin。两侧的定宽列通过负 margin 来占据.main 元素的 margin 区域
 
-缺点: 并没有实现等高布局，增加了html结构
+缺点: 并没有实现等高布局，增加了 html 结构
 
 链接： https://www.cnblogs.com/xiaohuochai/p/5459587.html

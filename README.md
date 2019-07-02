@@ -22,20 +22,41 @@
 ### JavaScript
 
 1. [JS 的运行机制](./interview/javascript/jsrun.md)
+2. [JS 的小数精度问题](./interview/javascript/floatPreci.md)
+3. [JS 的类型转换](./interview/javascript/typeChange.md)
+4. [原型链](./interview/javascript/proto.md)
+5. [面向对象](./interview/javascript/object.md)
+6. [尾递归调用](./interview/javascript/tailRecursion.md)
 
 ### HTML
 
 ### CSS
 
+1. [盒模型](./interview/css/box.md)
+2. [classList](./interview/css/classList.md)
+3. [页面布局](./interview/css/layout.md)
+
 ### 浏览器
 
 1. [浏览器的渲染机制](./interview/browser/paint.md)
+2. [DOM 事件](./interview/browser/dom.md)
+3. [页面加载和页面渲染过程](./interview/browser/page_load.md)
 
 ### 性能优化
 
 1. [如何进行前端优化](./interview/optimization/optimization.md)
 
 ### React
+
+### HTTP
+
+1. [HTTP 基础](./interview/http/http.md)
+
+### 其他
+
+1. [前端通信](./interview/other/communicate.md)
+2. [跨域解决方案](./interview/other/crossOrigin.md)
+3. [前端安全](./interview/other/security.md)
 
 ## 前端相关资源整理
 

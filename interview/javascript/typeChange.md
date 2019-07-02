@@ -19,32 +19,32 @@ JS 中有 7 中数据类型：
 
 1. Number()
 
-  ```js
-  // 基本数据转换
-  Number(1) // 数字： 数字 -> 数字
-  Number('123') // 字符串： 纯数字 -> 数字，不是纯数字 -> NaN，空字符串 -> 0
-  Number(true) // 布尔值： true -> 1，false -> 0
-  Number(undefined) // NaN
-  Number(null) // 0
-  // 复合类型数据转换
-  // 先调用 valueOf，如果输出为基本类型，则调用 Number，如果为复合类型，继续调用 toString，如果还不是基本数据类型就报错
-  ```
-    
+```js
+// 基本数据转换
+Number(1); // 数字： 数字 -> 数字
+Number('123'); // 字符串： 纯数字 -> 数字，不是纯数字 -> NaN，空字符串 -> 0
+Number(true); // 布尔值： true -> 1，false -> 0
+Number(undefined); // NaN
+Number(null); // 0
+// 复合类型数据转换
+// 先调用 valueOf，如果输出为基本类型，则调用 Number，如果为复合类型，继续调用 toString，如果还不是基本数据类型就报错
+```
+
 2. String()
 
-  ```js
-  // String() 很简单，就是将这些基本类型都变成字符串：
-  // 123 -> '123'
-  // true -> 'true'
-  // undefined -> 'undefined'
-  // null -> 'null'
-  // 复合类型转换
-  // 这个和上面的有点区别，是先掉 toString 然后掉 valueOf
-  ```
-    
+```js
+// String() 很简单，就是将这些基本类型都变成字符串：
+// 123 -> '123'
+// true -> 'true'
+// undefined -> 'undefined'
+// null -> 'null'
+// 复合类型转换
+// 这个和上面的有点区别，是先掉 toString 然后掉 valueOf
+```
+
 3. Boolean()
 
-  +0 -0 undefined null '' NaN -> false，其余都为 true
++0 -0 undefined null '' NaN -> false，其余都为 true
 
 ## 隐式类型转换
 

@@ -2,9 +2,9 @@
 
 ## DOM 事件级别
 
-- DOM 0 级： DOM0级事件就是将一个函数赋值给一个事件处理属性。
-- DOM 2 级： DOM2级事件定义了addEventListener和removeEventListener两个方法，分别用来绑定和解绑事件。
-- DOM 3 级： DOM3级事件在DOM2级事件的基础上添加了更多的事件类型。
+- DOM 0 级： DOM0 级事件就是将一个函数赋值给一个事件处理属性。
+- DOM 2 级： DOM2 级事件定义了 addEventListener 和 removeEventListener 两个方法，分别用来绑定和解绑事件。
+- DOM 3 级： DOM3 级事件在 DOM2 级事件的基础上添加了更多的事件类型。
 
 ## DOM 事件模型
 
