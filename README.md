@@ -19,6 +19,24 @@
 
 ## 面试题目收集整理
 
+### JavaScript
+
+1. [JS 的运行机制](./interview/javascript/jsrun.md)
+
+### HTML
+
+### CSS
+
+### 浏览器
+
+1. [浏览器的渲染机制](./interview/browser/paint.md)
+
+### 性能优化
+
+1. [如何进行前端优化](./interview/optimization/optimization.md)
+
+### React
+
 ## 前端相关资源整理
 
 1. [CSS 像素、物理像素、逻辑像素、设备像素比、PPI、Viewport](https://github.com/jawil/blog/issues/21)

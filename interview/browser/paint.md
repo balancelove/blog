@@ -8,7 +8,7 @@
 
 解析 HTML 结构 -> 解析 CSS 生成 cssom 树 -> 结合成 render 树进行渲染
 
-![](paint.png)
+![](./images/paint.png)
 
 Layout: render Tree 不包含 html 具体内容，不知道元素具体该画在哪个位置，布局计算了每一个对象的准确的位置以及大小
 
@@ -28,4 +28,3 @@ DOM 结构都有自己的盒模型，这些都需要浏览器根据各种样式�
 
 - DOM 改动
 - CSS 改动
-

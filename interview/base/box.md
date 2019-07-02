@@ -7,9 +7,9 @@
 1. margin + border + padding + content
 2. 标准模型： 计算内容宽度时 width = content width，高度计算相同。
 3. IE 模型： 计算内容宽度时 width = content + padding + border。
-4. box-sizing: border-box、content-box。 
-5. __JS 获取盒模型的宽高。__
-6. __边距重叠及 BFC。__
+4. box-sizing: border-box、content-box。
+5. **JS 获取盒模型的宽高。**
+6. **边距重叠及 BFC。**
 
 ## JS 获取盒模型的宽高
 
@@ -35,8 +35,7 @@
 
 ### 创建 BFC
 
-- position的值不为 static 或者 relative。
+- position 的值不为 static 或者 relative。
 - float 不为 none
 - display 为 table 相关
 - overflow 不为 visible
-
