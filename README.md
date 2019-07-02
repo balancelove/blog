@@ -28,6 +28,7 @@
 1. [JavaScript 是如何工作的？](./series/how_javascript/index.md)
 2. [JavaScript 设计模式了解](./series/design_pattern/index.md)
 3. [Vue 源码部分阅读](./series/vue_source/index.md)
+4. [TypeScript 学习小册](./series/typescript/index.md)
 
 ## 面试题目收集整理
 
