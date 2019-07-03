@@ -38,3 +38,39 @@ arr.push('string'); // Error
 ```
 
 同时我们也可以使用 `Array<T>` 的方式定义数组。
+
+## 元组
+
+JavaScript 是没有元组的这个概念的，通常都是使用数组来实现它，而 TS 可以对其进行定义。
+
+```ts
+const tupleType: [string, number] = ['age', 123];
+```
+
+## 枚举
+
+通常我们在 JavaScript 里使用对象来做一个映射结构，在 TS 里我们可以定义一个枚举值来完成这个操作。
+
+```ts
+// 默认情况下从 0 开始编号
+enum Color {
+  Red,
+  Blue,
+  Green
+}
+
+// 当然，我们也可以指定值
+enum Color {
+  Red = 1,
+  Blue,
+  Green
+}
+
+// 我们可以通过这个结构，方便的对值进行转换
+const color: Color = Color.Red;
+const colorName: string = Color[1];
+```
+
+## Any - 任意值
+
+万事不定用 Any，
