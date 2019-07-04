@@ -10,6 +10,8 @@
 
 **第一周**
 
+- LeetCode: [1 - 两数之和](./arts/week_1/leetcode.md)
+
 [查看详细，更多内容](./arts.md)
 
 ---
