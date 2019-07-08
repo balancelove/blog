@@ -5,3 +5,6 @@
 ## 第一周
 
 - LeetCode: [1 - 两数之和](./arts/week_1/leetcode.md)
+- Review: [高效程序员的 7 个技巧](./arts/week_1/review.md)
+- Tips:
+- Share:
