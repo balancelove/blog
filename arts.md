@@ -8,3 +8,5 @@
 - Review: [高效程序员的 7 个技巧](./arts/week_1/review.md)
 - Tips: [如何确保不会出现 undefined 的错误？](./arts/week_1/tips.md)
 - Share: [async、await 在 for 循环里怎么样？](./arts/week_1/share.md)
+
+## 第二周
