@@ -10,7 +10,7 @@
 
 **第二周**
 
-- LeetCode: [1 - 两数之和](./arts/week_2/leetcode.md)
+- LeetCode: [2. 两数相加](./arts/week_2/leetcode.md)
 
 [查看详细，更多内容](./arts.md)
 
