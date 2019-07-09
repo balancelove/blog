@@ -6,5 +6,5 @@
 
 - LeetCode: [1 - 两数之和](./arts/week_1/leetcode.md)
 - Review: [高效程序员的 7 个技巧](./arts/week_1/review.md)
-- Tips:
+- Tips: [如何确保不会出现 undefined 的错误？](./arts/week_1/tips.md)
 - Share:
