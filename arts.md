@@ -14,5 +14,6 @@
 - LeetCode: [2. 两数相加](./arts/week_2/leetcode.md)
 - Review: [11 个 JavaScript 技巧](./arts/week_2/review.md)
 - Tips: [VSCode 插件开发模式正常跑，打包过后就找不到命令？](./arts/week_2/tips.md)
+- Share: [Linux 常用命令](./arts/week_2/share.md)
 
 ## 第三周
