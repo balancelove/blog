@@ -93,6 +93,7 @@
 12. [Timing Attack](./article/timing_attack/index.md)
 13. [换个角度学 Webpack](./article/webpack/index.md)
 14. [Http 缓存那些事](./article/http_cache/index.md)
+15. [async、await 在 for 循环里怎么样？](./article/async_await_for/index.md)
 
 ## 活动知识整理
 
@@ -112,5 +113,10 @@
 10. [【ElasticSearch】cluster_block_exception](./tips/elasticsearch/cluster_block_exception.md)
 11. [【React Native】连接真机调试找不到设备](./tips/rn/connect_device.md)
 12. [【React】Echarts 图表显示问题](./tips/react/echarts.md)
+13. [【代码注意事项】确保不会出现 undefined](./tips/code.undefined.md)
+14. [【其他】VSCode 插件找不到命令](./tips/others/extension_command.md)
 
 ## 国外文章阅读总结
+
+1. [高效程序员的 7 个技巧](./read/7_habits.md)
+2. [11 个 JavaScript 技巧](./read/11_js_tricks.md)
