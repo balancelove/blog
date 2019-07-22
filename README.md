@@ -8,6 +8,8 @@
 
 - [【哈希表】两数之和](./leetcode/1.md)
 - [【链表】两数相加](./leetcode/2.md)
+- [【哈希表】整数转罗马数字](./leetcode/12.md)
+- [【哈希表】罗马数字转整数](./leetcode/13.md)
 - [【规律题】各位相加](./leetcode/258.md)
 
 [更多 LeetCode >>](./leetcode/index.md)
