@@ -1,6 +1,19 @@
 # 通过浏览器获取音视频设备
 
-## 所需的 API
+## WebRTC 设备管理
+
+### navigator.mediaDevices.enumerateDevices
+
+`navigator.mediaDevices.enumerateDevices` 获取电脑的音频、视频设备信息。
+
+返回 `InputDeviceInfo / MediaDeviceInfo`。
+
+- deviceId: 设备 Id
+- groupId: 设备组 Id，两个设备组 Id 相同代表是同一个物理设备
+- kind: 设备类型
+- label: 标签
+
+## 音视频采集
 
 ### getUserMedia
 
