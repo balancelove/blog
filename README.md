@@ -4,6 +4,14 @@
 
 ---
 
+## LeetCode 练习
+
+- [【哈希表】两数之和](./leetcode/1.md)
+- [【链表】两数相加](./leetcode/2.md)
+- [【规律题】各位相加](./leetcode/258.md)
+
+[更多 LeetCode >>](./leetcode/index.md)
+
 ## 目录
 
 1. [系列文章整理](#系列文章整理)
