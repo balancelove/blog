@@ -12,6 +12,7 @@
 4. [随笔文章整理](#随笔文章整理)
 5. [活动知识整理](#活动知识整理)
 6. [工作小 Tips 总结](#Tips)
+7. [国外文章阅读总结](#国外文章阅读总结)
 
 ## 系列文章整理
 
@@ -103,3 +104,5 @@
 10. [【ElasticSearch】cluster_block_exception](./tips/elasticsearch/cluster_block_exception.md)
 11. [【React Native】连接真机调试找不到设备](./tips/rn/connect_device.md)
 12. [【React】Echarts 图表显示问题](./tips/react/echarts.md)
+
+## 国外文章阅读总结
