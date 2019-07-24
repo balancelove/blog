@@ -14,6 +14,8 @@
 ## API
 
 1. [通过浏览器获取音视频设备](./device.md)
+2. [检测音视频设备](./check_device.md)
+3. [视频截图](./capture.md)
 
 ## 协议相关
 
