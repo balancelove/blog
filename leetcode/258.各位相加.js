@@ -31,5 +31,6 @@
  * @return {number}
  */
 var addDigits = function(num) {
+  // 找规律
   return 1 + ((num - 1) % 9);
 };
