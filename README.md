@@ -29,7 +29,7 @@
 1. [JavaScript 是如何工作的？](./series/how_javascript/index.md)
 2. [JavaScript 设计模式了解](./series/design_pattern/index.md)
 3. [Vue 源码部分阅读](./series/vue_source/index.md)
-4. [WebRTC 视频直播](./series/webrtc/index.md)
+4. [企业效能](./series/company_efficacy)
 
 ## 面试题目收集整理
 
