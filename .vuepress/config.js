@@ -70,7 +70,6 @@ module.exports = {
             text: '掘金',
             link: 'https://juejin.im/user/59cbb8d46fb9a00a6c12c2cf',
           },
-          { text: 'Github', link: 'https://github.com/balancelove' },
         ],
       },
       {
@@ -107,7 +106,7 @@ module.exports = {
       '/series/leetcode/': leetcode,
       '/collection/': collection,
     },
-    // sidebarDepth: 0,
+    sidebarDepth: 0,
     lastUpdated: 'Last Updated',
     smoothScroll: true,
     // displayAllHeaders: true,
@@ -126,5 +125,36 @@ module.exports = {
         updatePopup: true,
       },
     ],
+    (options, ctx) => {
+      return {
+        name: 'archive',
+        async additionalPages() {
+          return [
+            {
+              path: '/',
+              frontmatter: {
+                home: true,
+                heroImage: '/me.png',
+                features: [
+                  {
+                    title: '修身养性',
+                    details: '读书就是在读人生，它教会我如何热爱他人、热爱生命、热爱生活',
+                  },
+                  {
+                    title: '每日一问',
+                    details: '纸上得来终觉浅,绝知此事要躬行',
+                  },
+                  {
+                    title: '日积月累',
+                    details: '读书破万卷，下笔如有神。熟读唐诗三百首，不会作诗也会吟',
+                  },
+                ],
+                footer: 'MIT Licensed | Copyright © 2018-2020 小烜同学',
+              },
+            },
+          ];
+        },
+      };
+    },
   ],
 };
