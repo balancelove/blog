@@ -12,7 +12,7 @@ FROM nginx:1.17.0
 
 WORKDIR /usr/src/app
 
-COPY --from=0 /usr/src/app/docs/.vuepress/dist ./public
+COPY --from=0 /usr/src/app/.vuepress/dist ./public
 COPY --from=0 /usr/src/app/nginx.conf /etc/nginx/conf.d/default.conf
 
 # 暴露端口
