@@ -142,7 +142,7 @@ module.exports = {
                   },
                   {
                     title: '每日一问',
-                    details: '纸上得来终觉浅,绝知此事要躬行',
+                    details: '纸上得来终觉浅，绝知此事要躬行',
                   },
                   {
                     title: '日积月累',
