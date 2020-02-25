@@ -6,9 +6,10 @@
 
 ## 目录
 
-1. [Docker 的安装](/series/personal_op/docker_install)
-2. [使用阿里云容器镜像服务](/series/personal_op/aliyun_image)
-3. [CapRover 的安装与使用](/series/personal_op/caprover_install)
-4. [使用 kubeadm 安装 K8s]()
-5. [K8s PV&PVC 创建]()
-6. [Helm 的安装和使用]()
+1. [Docker 的安装](/series/personal_op/docker_install.md)
+2. [使用阿里云容器镜像服务](/series/personal_op/aliyun_image.md)
+3. [CapRover 的安装与使用](/series/personal_op/caprover_install.md)
+4. [ssh-keygen免密登录](/series/ssh_keygen_login.md)
+5. [使用 kubeadm 安装 K8s]()
+6. [K8s PV&PVC 创建]()
+7. [Helm 的安装和使用]()
