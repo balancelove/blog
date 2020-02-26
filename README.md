@@ -8,7 +8,7 @@
 
 每天学习一个知识点，领域广泛，欢迎讨论。
 
-当前一问：[React 里的 setState 到底是同步还是异步？](./ask-and-answer/Q2.md)
+当前一问：[package.json 里到底有哪些值？](./ask-and-answer/Q3.md)
 
 ## 关于我
 

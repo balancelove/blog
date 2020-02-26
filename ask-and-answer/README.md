@@ -4,5 +4,6 @@
 
 ## 目录
 
-1. [Q1：网站里的复制粘贴是怎么做的？](/ask-and-answer/Q1.md)
-2. [Q2：React 里的 setState 到底是同步还是异步？](/ask-and-answer/Q2.md)
+1. [Q1: 网站里的复制粘贴是怎么做的？](/ask-and-answer/Q1.md)
+2. [Q2: React 里的 setState 到底是同步还是异步？](/ask-and-answer/Q2.md)
+3. [Q3: package.json 里到底有哪些值？](/ask-and-answer/Q3.md)
