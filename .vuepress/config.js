@@ -25,7 +25,7 @@ module.exports = {
     // text 为导航栏显示文字，link 为路径，即文件夹名字，注意不要丢了名字前后的'/'
     nav: [
       { text: '主页', link: '/' },
-      { text: '每日一问', link: '/ask-and-answer/' },
+      { text: '十万个为什么', link: '/ask-and-answer/' },
       {
         text: '系列文章',
         items: [
@@ -141,7 +141,7 @@ module.exports = {
                     details: '读书就是在读人生，它教会我如何热爱他人、热爱生命、热爱生活',
                   },
                   {
-                    title: '每日一问',
+                    title: '十万个为什么',
                     details: '纸上得来终觉浅，绝知此事要躬行',
                   },
                   {
