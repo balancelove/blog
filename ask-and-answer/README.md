@@ -9,6 +9,8 @@
 3. [Q3: JS 基础之创建对象有几种方式？](/ask-and-answer/Q3.md)
 4. [Q4: JS 基础之原型链是什么？](/ask-and-answer/Q4.md)
 5. [Q5: JS 基础之数据类型](/ask-and-answer/Q5.md)
+6. [Q6: JS 基础之深拷贝](/ask-and-answer/Q6.md)
+7. [Q7: JS 基础之类型转换](/ask-and-answer/Q7.md)
 
 ## 待更新
 
