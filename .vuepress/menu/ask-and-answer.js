@@ -11,4 +11,5 @@ module.exports = [
   ['Q10', 'JS 基础之作用域和作用域链'],
   ['Q11', 'JS 基础之 cookie'],
   ['Q12', 'JS 基础之 localStorage 和 sessionStorage'],
+  ['Q13', 'Linux 常用命令'],
 ];
