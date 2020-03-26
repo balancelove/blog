@@ -2,7 +2,7 @@ const collection = require('./menu/collection');
 const tips = require('./menu/tips');
 const technology = require('./menu/technology');
 const reading = require('./menu/reading');
-const ask_and_answer = require('./menu/ask-and-answer');
+const tech_map = require('./menu/tech_map');
 
 const how_javascript_work = require('./menu/series/how_javascript_work');
 const linux_shell = require('./menu/series/linux_shell');
@@ -25,7 +25,7 @@ module.exports = {
     // text 为导航栏显示文字，link 为路径，即文件夹名字，注意不要丢了名字前后的'/'
     nav: [
       { text: '主页', link: '/' },
-      { text: '十万个为什么', link: '/ask-and-answer/' },
+      { text: '我的技术地图', link: '/tech_map/' },
       {
         text: '系列文章',
         items: [
@@ -95,7 +95,7 @@ module.exports = {
       },
     ],
     sidebar: {
-      '/ask-and-answer/': ask_and_answer,
+      '/tech_map/': tech_map,
       '/reading/': reading,
       '/technology/': technology,
       '/tips/': tips,
@@ -138,15 +138,17 @@ module.exports = {
                 features: [
                   {
                     title: '修身养性',
-                    details: '读书就是在读人生，它教会我如何热爱他人、热爱生命、热爱生活',
+                    details:
+                      '读书就是在读人生，它教会我如何热爱他人、热爱生命、热爱生活',
                   },
                   {
-                    title: '十万个为什么',
+                    title: '刻意练习',
                     details: '纸上得来终觉浅，绝知此事要躬行',
                   },
                   {
                     title: '日积月累',
-                    details: '读书破万卷，下笔如有神。熟读唐诗三百首，不会作诗也会吟',
+                    details:
+                      '读书破万卷，下笔如有神。熟读唐诗三百首，不会作诗也会吟',
                   },
                 ],
                 footer: 'MIT Licensed | Copyright © 2018-2020 小烜同学',
