@@ -3,6 +3,9 @@ kind: Deployment
 metadata:
   name: blog
 spec:
+  selector:
+    matchLabels:
+      app: blog
   template:
     metadata:
       labels:
