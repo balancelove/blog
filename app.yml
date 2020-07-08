@@ -13,6 +13,7 @@ spec:
     spec:
       containers:
         - name: blog
+          imagePullPolicy: Never
           image: blog:latest
 ---
 apiVersion: v1
