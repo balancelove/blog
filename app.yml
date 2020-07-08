@@ -37,7 +37,7 @@ metadata:
   name: blog
 spec:
   rules:
-    - host: blog.lowrods.com
+    - host: blog.lowords.com
       http:
         paths:
           - backend:
