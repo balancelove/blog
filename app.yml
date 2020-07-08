@@ -1,0 +1,42 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: blog
+spec:
+  template:
+    metadata:
+      labels:
+        app: blog
+    spec:
+      containers:
+        - name: blog
+          imagePullPolicy: Always
+          image: blog:latest
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: blog
+  labels:
+    app: blog
+spec:
+  selector:
+    app: blog
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
+      protocol: TCP
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: blog
+spec:
+  rules:
+    - host: blog.lowrods.com
+      http:
+        paths:
+          - backend:
+              serviceName: blog
+              servicePort: 80
