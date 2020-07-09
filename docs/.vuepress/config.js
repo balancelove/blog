@@ -63,11 +63,12 @@ module.exports = {
         link: '/docker/',
         items: [
           {
-            text: '前端文章',
-            items: [
-              { text: 'Vue 源码解析', link: '/pages/d5a9a7/' },
-              { text: 'Redux 源码解析', link: '/pages/fa2e36/' },
-            ],
+            text: 'Docker',
+            link: '/pages/7c0943/',
+          },
+          {
+            text: 'Kubernetes',
+            link: '/pages/9de6e4/',
           },
         ],
       },
