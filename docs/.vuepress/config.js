@@ -6,6 +6,34 @@ module.exports = {
   markdown: {
     lineNumbers: true, // 代码块显示行号
   },
+  plugins: [
+    [
+      '@vuepress/last-updated',
+      {
+        transformer: (timestamp, lang) => {
+          const moment = require('moment');
+          return moment(timestamp).format('YYYY-MM-DD HH:mm:ss');
+        },
+      },
+    ],
+    [
+      'vuepress-plugin-comment',
+      {
+        choosen: 'gitalk',
+        options: {
+          id: '<%- frontmatter.commentid || frontmatter.permalink %>',
+          title: '「Comment」<%- frontmatter.title %>',
+          body:
+            '<%- frontmatter.title %>：<%-window.location.origin %><%- frontmatter.to.path || window.location.pathname %>',
+          clientID: '9a042091f65631274241',
+          clientSecret: '82b087e75d6f3f34c6d5ec718e5c78ea5cfccbf6',
+          repo: 'blog',
+          owner: 'balancelove',
+          admin: ['balancelove'],
+        },
+      },
+    ],
+  ],
   themeConfig: {
     repo: 'balancelove/blog',
     logo: '/avatar.jpg',
@@ -15,35 +43,6 @@ module.exports = {
     docsDir: 'docs',
     editLinks: true,
     editLinkText: '编辑',
-    plugins: [
-      [
-        'vuepress-plugin-comment',
-        {
-          choosen: 'gitalk',
-          options: {
-            id: '<%- frontmatter.commentid || frontmatter.permalink %>',
-            title: '「Comment」<%- frontmatter.title %>',
-            body:
-              '<%- frontmatter.title %>：<%-window.location.origin %><%- frontmatter.to.path || window.location.pathname %>',
-            clientID: '9a042091f65631274241',
-            clientSecret: '82b087e75d6f3f34c6d5ec718e5c78ea5cfccbf6',
-            repo: 'blog',
-            owner: 'balancelove',
-            admin: ['balancelove'],
-          },
-        },
-      ],
-      [
-        '@vuepress/last-updated',
-        {
-          transformer: (timestamp, lang) => {
-            console.log(timestamp);
-            const moment = require('moment');
-            return moment(timestamp).format('YYYY-MM-DD HH:mm:ss');
-          },
-        },
-      ],
-    ],
     nav: [
       { text: '首页', link: '/' },
       {
